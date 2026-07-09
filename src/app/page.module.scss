@@ -1,0 +1,131 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  padding: 2.5rem 0;
+}
+
+.aboutGrid,
+.skillGrid,
+.projectGrid,
+.resumeGrid,
+.ndaGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.sliderWrap {
+  overflow-x: auto;
+  padding: 0.25rem 0 0.9rem;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.sliderWrap::-webkit-scrollbar {
+  height: 8px;
+}
+
+.sliderWrap::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.35);
+  border-radius: 999px;
+}
+
+.sliderRail {
+  display: flex;
+  gap: 1rem;
+  min-width: max-content;
+  padding-bottom: 0.25rem;
+  align-items: stretch;
+}
+
+.sliderItem {
+  flex: 0 0 min(82vw, 360px);
+  scroll-snap-align: start;
+}
+
+.aboutGrid {
+  grid-template-columns: 1.3fr 0.7fr;
+}
+
+.textBlock p {
+  color: $color-text-muted;
+  margin: 0 0 1rem;
+}
+
+.valueCard {
+  @include card;
+  padding: 1.2rem;
+  height: fit-content;
+}
+
+.valueCard h3,
+.skillGroup h3,
+.experienceCard h3 {
+  margin-top: 0;
+}
+
+.valueCard ul {
+  padding-left: 1.1rem;
+  color: $color-text-muted;
+}
+
+.skillGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skillGroup {
+  @include card;
+  padding: 1.1rem;
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.projectGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.experienceSummary {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.experienceCard {
+  @include card;
+  padding: 1rem;
+}
+
+.experienceCard p,
+.experienceCard span {
+  color: $color-text-muted;
+}
+
+.ndaGrid,
+.resumeGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .aboutGrid,
+  .projectGrid,
+  .experienceSummary,
+  .ndaGrid,
+  .resumeGrid,
+  .skillGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .sliderWrap {
+    overflow-x: auto;
+  }
+
+  .sliderItem {
+    flex-basis: 320px;
+  }
+}

@@ -1,0 +1,6 @@
+@use '@/styles/variables' as *;
+
+.container {
+  width: min(100% - 2rem, $max-width);
+  margin: 0 auto;
+}

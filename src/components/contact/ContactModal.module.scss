@@ -1,0 +1,59 @@
+@use '@/styles/variables' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: $color-overlay;
+  backdrop-filter: blur(10px);
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 34rem);
+  max-height: min(90vh, 42rem);
+  overflow: auto;
+  border: 1px solid $color-border-strong;
+  border-radius: 1.5rem;
+  background: linear-gradient(145deg, $color-surface-elevated, $color-surface-soft);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.55);
+  padding: 2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: $color-accent-soft;
+  color: $color-text;
+  cursor: pointer;
+  transition: transform $transition, background $transition;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  transform: rotate(90deg);
+  background: rgba(167, 139, 250, 0.24);
+}
+
+.closeButton span {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+@media (max-width: 760px) {
+  .modal {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,21 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.card {
+  @include card;
+  padding: 1.2rem;
+}
+
+.title {
+  margin: 0 0 0.4rem;
+}
+
+.description {
+  margin: 0 0 0.8rem;
+  color: $color-text-muted;
+}
+
+.link {
+  color: $color-primary-light;
+  font-weight: 700;
+}

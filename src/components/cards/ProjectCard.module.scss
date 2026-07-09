@@ -1,0 +1,73 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.card {
+  @include card;
+  overflow: hidden;
+  transition: transform $transition, border-color $transition;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  border-color: $color-primary-light;
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(30, 41, 59, 0.8));
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  padding: 1.2rem;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: $color-primary-light;
+  font-size: 0.9rem;
+}
+
+.status {
+  color: $color-success;
+}
+
+.title {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.description {
+  margin: 0 0 0.95rem;
+  color: $color-text-muted;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stack span {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid $color-border;
+  font-size: 0.82rem;
+}
+
+.link {
+  font-weight: 700;
+  color: $color-primary-light;
+}

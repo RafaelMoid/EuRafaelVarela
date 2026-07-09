@@ -1,0 +1,13 @@
+@use '@/styles/variables' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid $color-border;
+  border-radius: 999px;
+  background: rgba(30, 41, 59, 0.75);
+  color: $color-text-muted;
+  font-size: 0.9rem;
+}

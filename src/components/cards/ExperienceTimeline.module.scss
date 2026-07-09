@@ -1,0 +1,94 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.2rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0.9rem;
+  bottom: 0.7rem;
+  left: 6px;
+  width: 2px;
+  background: #ffffff;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 1rem;
+  align-items: start;
+  position: relative;
+}
+
+.dot {
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0;
+  align-self: center;
+  background: $color-primary-light;
+  box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.15);
+}
+
+.content {
+  @include card;
+  padding: 1.1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.company {
+  margin: 0;
+}
+
+.role {
+  margin: 0.25rem 0 0;
+  color: $color-primary-light;
+}
+
+.period {
+  color: $color-text-muted;
+  font-size: 0.95rem;
+}
+
+.summary {
+  margin: 0 0 0.8rem;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.stack span {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid $color-border;
+  font-size: 0.82rem;
+}
+
+.note {
+  margin: 0;
+  color: $color-text-muted;
+}

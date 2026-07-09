@@ -1,0 +1,25 @@
+@use '@/styles/variables' as *;
+
+.wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: $color-primary-light;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+}
+
+.description {
+  margin: 0;
+  max-width: 70ch;
+  color: $color-text-muted;
+}

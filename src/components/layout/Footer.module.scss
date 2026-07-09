@@ -1,0 +1,78 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+  border-top: 1px solid $color-border;
+  padding: 2rem 0 1.5rem;
+  margin-top: 4rem;
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.5fr 1fr 1fr;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.summary,
+.bottom p {
+  margin: 0;
+  color: $color-text-muted;
+}
+
+.links,
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.links a,
+.contactLink {
+  color: $color-text-muted;
+}
+
+.links a:hover,
+.links a:focus-visible,
+.contactLink:hover,
+.contactLink:focus-visible {
+  color: $color-text;
+}
+
+.contactLink {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.stack span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: $color-primary-light;
+}
+
+.bottom {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(51, 65, 85, 0.45);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}
