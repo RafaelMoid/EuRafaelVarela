@@ -57,6 +57,25 @@ npm run start
 - CSS modularizado com SCSS Modules
 - Design responsivo e mobile-first
 
+## Estrutura de cores e tokens
+
+O projeto centraliza a paleta visual em [src/styles/variables.scss](src/styles/variables.scss) para facilitar manutenção e consistência visual. A estrutura atual contempla:
+
+- Cores base: background, superfície, superfície elevada
+- Cores de texto: texto principal, texto secundário e texto suave
+- Cores primárias e secundárias: principal, principal clara, principal forte, secundária e acento
+- Cores de destaque e interação: hover, hover suave, acento suave
+- Cores de suporte: sucesso, aviso, borda, overlay e branco
+
+Exemplo de uso:
+
+```scss
+$color-primary: #2563eb;
+$color-secondary: #7c3aed;
+$color-text: #f8fafc;
+$color-hover: rgba(109, 40, 217, 0.3);
+```
+
 ## Acessibilidade
 
 - HTML semântico
