@@ -59,13 +59,39 @@ npm run start
 
 ## Estrutura de cores e tokens
 
-O projeto centraliza a paleta visual em [src/styles/variables.scss](src/styles/variables.scss) para facilitar manutenção e consistência visual. A estrutura atual contempla:
+O projeto centraliza a paleta visual em [src/styles/variables.scss](src/styles/variables.scss) para facilitar manutenção e consistência visual. A estrutura atual contempla todas as variáveis de cor abaixo:
 
-- Cores base: background, superfície, superfície elevada
-- Cores de texto: texto principal, texto secundário e texto suave
-- Cores primárias e secundárias: principal, principal clara, principal forte, secundária e acento
-- Cores de destaque e interação: hover, hover suave, acento suave
-- Cores de suporte: sucesso, aviso, borda, overlay e branco
+- Cores base
+  - $color-bg: #0f172a
+  - $color-surface: #111827
+  - $color-surface-soft: #1e293b
+  - $color-surface-elevated: rgba(17, 24, 39, 0.95)
+
+- Cores de texto
+  - $color-text: #f8fafc
+  - $color-text-muted: #cbd5e1
+  - $color-text-soft: #94a3b8
+
+- Cores primárias e secundárias
+  - $color-primary: #2563eb
+  - $color-primary-light: #60a5fa
+  - $color-primary-strong: #1d4ed8
+  - $color-secondary: #7c3aed
+  - $color-secondary-soft: #a78bfa
+  - $color-accent: #8b5cf6
+
+- Cores de destaque e interação
+  - $color-accent-soft: rgba(139, 92, 246, 0.2)
+  - $color-hover: rgba(109, 40, 217, 0.3)
+  - $color-hover-soft: rgba(37, 99, 235, 0.16)
+
+- Cores de suporte
+  - $color-success: #22c55e
+  - $color-warning: #f59e0b
+  - $color-border: #334155
+  - $color-border-strong: rgba(167, 139, 250, 0.35)
+  - $color-overlay: rgba(2, 6, 23, 0.78)
+  - $color-white: #ffffff
 
 Exemplo de uso:
 
