@@ -1,8 +1,11 @@
+'use client';
+
 import { Container } from '@/components/ui/Container';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ContactCard } from '@/components/cards/ContactCard';
 import { constructMetadata } from '@/utils/seo';
 import type { Metadata } from 'next';
+import { useLanguage } from '@/components/language/LanguageProvider';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Contato | Rafael Varela',
@@ -11,10 +14,12 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function ContactPage() {
+  const { translate } = useLanguage();
+
   return (
     <section aria-labelledby="contact-title" style={{ padding: '2rem 0 4rem' }}>
       <Container>
-        <SectionTitle eyebrow="Contato" title="Disponível para oportunidades técnicas e estratégicas" description="Estou disponível para conversas sobre oportunidades em desenvolvimento web, WordPress/PHP, front-end, web/fullstack e gestão técnica de tecnologia." />
+        <SectionTitle eyebrow={translate.contact.eyebrow} title={translate.contact.title} description={translate.contact.description} />
         <ContactCard />
       </Container>
     </section>

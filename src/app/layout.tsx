@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ContactModal } from '@/components/contact/ContactModal';
 import { constructMetadata } from '@/utils/seo';
+import { LanguageProvider } from '@/components/language/LanguageProvider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -18,13 +19,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={inter.variable}>
       <body>
-        <a href="#main-content" className="skip-link">
-          Ir para o conteúdo principal
-        </a>
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <ContactModal />
+        <LanguageProvider>
+          <a href="#main-content" className="skip-link">
+            Ir para o conteúdo principal
+          </a>
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <ContactModal />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+'use client';
+
 import { HeroSection } from '@/components/sections/HeroSection';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Container } from '@/components/ui/Container';
@@ -8,26 +10,29 @@ import { ResumeCard } from '@/components/cards/ResumeCard';
 import { ContactCard } from '@/components/cards/ContactCard';
 import { skillGroups } from '@/data/skills';
 import { SkillBadge } from '@/components/ui/SkillBadge';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import styles from './page.module.scss';
 
 export default function HomePage() {
+  const { translate } = useLanguage();
+
   return (
     <>
       <HeroSection />
       <section className={styles.section} aria-labelledby="about-title">
         <Container>
-          <SectionTitle eyebrow="Apresentação" title="Desenvolvedor web com visão técnica e orientado a impacto" description="Minha trajetória reúne desenvolvimento front-end, WordPress/PHP, sistemas web, SEO técnico, performance, acessibilidade e gestão técnica de soluções digitais." />
+          <SectionTitle
+            eyebrow={translate.home.about.eyebrow}
+            title={translate.home.about.title}
+            description={translate.home.about.description1}
+          />
           <div className={styles.aboutGrid}>
             <div className={styles.textBlock}>
-              <p>
-                Sou Rafael Varela, profissional de tecnologia com atuação em desenvolvimento front-end, WordPress/PHP, sistemas web e gestão técnica de projetos. Minha trajetória combina experiência prática em desenvolvimento de interfaces, criação de sites profissionais, integração com APIs, performance, acessibilidade, SEO técnico e organização de soluções digitais para ambientes reais de negócio.
-              </p>
-              <p>
-                Ao longo da minha carreira, atuei em projetos para agências, empresas privadas e setor público, desenvolvendo soluções com WordPress, PHP, ACF, Elementor, React, Next.js, JavaScript, TypeScript, SCSS e consumo de APIs. Também tive experiência em projetos internacionais, trabalhando remotamente com demandas digitais para marcas globais, o que ampliou minha visão sobre qualidade técnica, colaboração, prazos e entrega profissional.
-              </p>
+              <p>{translate.home.about.description1}</p>
+              <p>{translate.home.about.description2}</p>
             </div>
             <div className={styles.valueCard}>
-              <h3>Valor técnico</h3>
+              <h3>{translate.home.skills.eyebrow}</h3>
               <ul>
                 <li>WordPress customizado</li>
                 <li>PHP e temas profissionais</li>
@@ -41,7 +46,7 @@ export default function HomePage() {
 
       <section className={styles.section} aria-labelledby="skills-title">
         <Container>
-          <SectionTitle eyebrow="Stacks principais" title="Competências que sustentam soluções reais" />
+          <SectionTitle eyebrow={translate.home.skills.eyebrow} title={translate.home.skills.title} />
           <div className={styles.skillGrid}>
             {skillGroups.map((group) => (
               <div key={group.title} className={styles.skillGroup}>
@@ -59,7 +64,7 @@ export default function HomePage() {
 
       <section className={styles.section} aria-labelledby="projects-title">
         <Container>
-          <SectionTitle eyebrow="Projetos" title="Portfólio técnico com foco em aplicações reais" />
+          <SectionTitle eyebrow={translate.home.projects.eyebrow} title={translate.home.projects.title} />
           <div className={styles.sliderWrap}>
             <div className={styles.sliderRail} role="list">
               {projects.map((project) => (
@@ -74,7 +79,7 @@ export default function HomePage() {
 
       <section className={styles.section} aria-labelledby="experience-title">
         <Container>
-          <SectionTitle eyebrow="Experiência" title="Trajetória prática e posicionamento de valor" />
+          <SectionTitle eyebrow={translate.home.experience.eyebrow} title={translate.home.experience.title} />
           <div className={styles.experienceSummary}>
             {experiences.slice(0, 3).map((item) => (
               <div key={item.company} className={styles.experienceCard}>
@@ -89,7 +94,7 @@ export default function HomePage() {
 
       <section className={styles.section} aria-labelledby="resume-title">
         <Container>
-          <SectionTitle eyebrow="Currículos por foco" title="Escolha o perfil mais alinhado à oportunidade" />
+          <SectionTitle eyebrow={translate.home.resume.eyebrow} title={translate.home.resume.title} />
           <div className={styles.resumeGrid}>
             <ResumeCard title="WordPress/PHP" description="Especialização em temas customizados, CMS, performance e SEO técnico." href="/curriculo/wordpress-php" />
             <ResumeCard title="React/Front-end" description="Foco em interfaces, acessibilidade e aplicações web com boa experiência de uso." href="/curriculo/react-front-end" />
@@ -100,7 +105,11 @@ export default function HomePage() {
 
       <section className={styles.section} aria-labelledby="contact-title">
         <Container>
-          <SectionTitle eyebrow="Contato" title="Pronto para conversar sobre a próxima oportunidade" description="Estou disponível para recrutadores, gestores técnicos e empresas que buscam um profissional com forte base em WordPress, front-end e soluções digitais reais." />
+          <SectionTitle
+            eyebrow={translate.home.contact.eyebrow}
+            title={translate.home.contact.title}
+            description={translate.home.contact.description}
+          />
           <ContactCard />
         </Container>
       </section>

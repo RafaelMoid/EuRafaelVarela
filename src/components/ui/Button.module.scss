@@ -8,6 +8,7 @@
   padding: 0.8rem 1.1rem;
   border-radius: 999px;
   border: 1px solid transparent;
+  font-size: $button-font-size;
   font-weight: 700;
   transition: transform $transition, background $transition, color $transition, border-color $transition;
 }

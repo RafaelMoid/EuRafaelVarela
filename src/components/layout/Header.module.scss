@@ -31,10 +31,17 @@
   align-items: center;
 }
 
+.languageWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .link {
   padding: 0.6rem 0.75rem;
   border-radius: 999px;
   color: $color-text-muted;
+  font-size: $button-font-size;
   transition: background $transition, color $transition;
 }
 

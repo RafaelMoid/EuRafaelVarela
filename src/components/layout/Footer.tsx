@@ -1,9 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import { profile } from '@/data/profile';
 import { ContactTrigger } from '@/components/contact/ContactTrigger';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import styles from './Footer.module.scss';
 
 export function Footer() {
+  const { translate } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -11,12 +15,12 @@ export function Footer() {
       <div className={styles.inner}>
         <div>
           <h2 className={styles.title}>{profile.name}</h2>
-          <p className={styles.summary}>Desenvolvedor web com foco em WordPress, front-end, sistemas digitais e gestão técnica.</p>
+          <p className={styles.summary}>{translate.home.contact.description}</p>
         </div>
         <div className={styles.links}>
-          <Link href="/projetos">Projetos</Link>
-          <Link href="/experiencia">Experiência</Link>
-          <ContactTrigger className={styles.contactLink}>Contato</ContactTrigger>
+          <Link href="/projetos">{translate.nav.projects}</Link>
+          <Link href="/experiencia">{translate.nav.experience}</Link>
+          <ContactTrigger className={styles.contactLink}>{translate.nav.contact}</ContactTrigger>
         </div>
         <div className={styles.stack}>
           <span>WordPress/PHP</span>

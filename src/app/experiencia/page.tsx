@@ -1,8 +1,11 @@
+'use client';
+
 import { Container } from '@/components/ui/Container';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ExperienceTimeline } from '@/components/cards/ExperienceTimeline';
 import { constructMetadata } from '@/utils/seo';
 import type { Metadata } from 'next';
+import { useLanguage } from '@/components/language/LanguageProvider';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Experiência | Rafael Varela',
@@ -11,10 +14,12 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function ExperiencePage() {
+  const { translate } = useLanguage();
+
   return (
     <section aria-labelledby="experience-title" style={{ padding: '2rem 0 4rem' }}>
       <Container>
-        <SectionTitle eyebrow="Experiência" title="Trajetória profissional com foco em entrega, organização e impacto" description="A experiência abaixo reúne atuação em projetos reais, ambientes com prazos, demandas técnicas e necessidade de comunicação clara com times e stakeholders." />
+        <SectionTitle eyebrow={translate.experience.eyebrow} title={translate.experience.title} description={translate.experience.description} />
         <ExperienceTimeline />
       </Container>
     </section>

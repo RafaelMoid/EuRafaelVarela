@@ -3,15 +3,26 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { navigation } from '@/data/navigation';
 import { ContactTrigger } from '@/components/contact/ContactTrigger';
+import { LanguageSelector } from '@/components/language/LanguageSelector';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import styles from './Header.module.scss';
 
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { translate } = useLanguage();
 
   const closeMenu = () => setMenuOpen(false);
+
+  const navItems = [
+    { href: '/', label: translate.nav.home },
+    { href: '/projetos', label: translate.nav.projects },
+    { href: '/experiencia', label: translate.nav.experience },
+    { href: '/sobre', label: translate.nav.about },
+    { href: '/curriculo', label: translate.nav.resume },
+    { href: '/contato', label: translate.nav.contact },
+  ];
 
   return (
     <header className={styles.header}>
@@ -19,6 +30,9 @@ export function Header() {
         <Link href="/" className={styles.brand} onClick={closeMenu} aria-label="Início do portfólio">
           Rafael Varela
         </Link>
+        <div className={styles.languageWrapper}>
+          <LanguageSelector />
+        </div>
         <button
           className={styles.menuButton}
           type="button"
@@ -32,7 +46,7 @@ export function Header() {
           <span />
         </button>
         <nav id="site-navigation" className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Navegação principal">
-          {navigation.map((item) => {
+          {navItems.map((item) => {
             const isActive = pathname === item.href;
 
             if (item.href === '/contato') {
