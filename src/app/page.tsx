@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ContactCard } from '@/components/cards/ContactCard';
@@ -13,6 +13,78 @@ import { projects } from '@/data/projects';
 import { skillGroups } from '@/data/skills';
 import { profile } from '@/data/profile';
 import styles from './page.module.scss';
+
+function AnimatedStatValue({ value }: { value: string }) {
+  const [displayValue, setDisplayValue] = useState('0');
+  const elementRef = useRef<HTMLElement | null>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const match = value.match(/^(\d+)(.*)$/);
+
+    if (!match) {
+      setDisplayValue(value);
+      return;
+    }
+
+    const [, numericValue, suffix] = match;
+    const target = Number(numericValue);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      setDisplayValue(value);
+      return;
+    }
+
+    const animate = () => {
+      if (hasAnimated.current) {
+        return;
+      }
+
+      hasAnimated.current = true;
+      const duration = 1200;
+      const startTime = performance.now();
+
+      const tick = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.round(target * easedProgress);
+
+        setDisplayValue(`${currentValue}${suffix}`);
+
+        if (progress < 1) {
+          window.requestAnimationFrame(tick);
+        }
+      };
+
+      window.requestAnimationFrame(tick);
+    };
+
+    const element = elementRef.current;
+
+    if (!element || !('IntersectionObserver' in window)) {
+      animate();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          animate();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [value]);
+
+  return <strong ref={elementRef}>{displayValue}</strong>;
+}
 
 export default function HomePage() {
   const [resumeEmailCopied, setResumeEmailCopied] = useState(false);
@@ -64,7 +136,7 @@ export default function HomePage() {
             <div className={styles.statsGrid}>
               {home.about.stats.map((item) => (
                 <div key={item.label} className={styles.statCard}>
-                  <strong>{item.value}</strong>
+                  <AnimatedStatValue value={item.value} />
                   <span>{item.label}</span>
                 </div>
               ))}
@@ -85,18 +157,20 @@ export default function HomePage() {
               <Image src="/assets/profile/rafael-varela.webp" alt="Foto profissional de Rafael Varela" width={280} height={280} />
               <h2 id="resume-title">{home.resume.title}</h2>
               <p>{home.resume.role}</p>
-              <Link href={profile.cvPath}>{home.resume.cta}</Link>
               <div className={styles.resumeContactActions} aria-label={contactModal.title}>
-                <button className={styles.resumeActionCard} type="button" onClick={copyResumeEmail}>
+                <Link className={`${styles.resumeActionButton} ${styles.resumeActionPrimary}`} href={profile.cvPath}>
+                  {home.resume.cta}
+                </Link>
+                <button className={`${styles.resumeActionButton} ${styles.resumeActionSecondary}`} type="button" onClick={copyResumeEmail}>
                   {resumeEmailCopied ? contactModal.copiedMain : contactModal.email}
                 </button>
-                <a className={styles.resumeActionCard} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+                <a className={`${styles.resumeActionButton} ${styles.resumeActionPrimary}`} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
                   LinkedIn
                 </a>
-                <a className={styles.resumeActionCard} href={profile.github} target="_blank" rel="noopener noreferrer">
+                <a className={`${styles.resumeActionButton} ${styles.resumeActionPrimary}`} href={profile.github} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
-                <button className={styles.resumePrimaryAction} type="button" onClick={copyResumeEmail}>
+                <button className={`${styles.resumeActionButton} ${styles.resumeActionPrimary}`} type="button" onClick={copyResumeEmail}>
                   {resumeEmailCopied ? contactModal.copiedMain : contactModal.copyMain}
                 </button>
               </div>

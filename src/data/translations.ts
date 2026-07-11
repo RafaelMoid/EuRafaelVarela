@@ -45,8 +45,8 @@ export const baseTranslations = {
     ],
     resumeBullets: ['4+ anos de experiência', 'Especialista Full-Stack', 'Problem solver e builder'],
     metrics: [
-      { title: 'SEO', score: '98', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Robots.txt'] },
-      { title: 'Performance', score: '96', items: ['Core Web Vitals', 'Carga rápida', 'Assets otimizados'] },
+      { title: 'SEO', score: '93', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Robots.txt'] },
+      { title: 'Performance', score: '91', items: ['Core Web Vitals', 'Carga rápida', 'Assets otimizados'] },
       { title: 'Acessibilidade', score: '100', items: ['Teclado', 'Leitor de tela', 'HTML semântico'] },
     ],
   },
@@ -63,8 +63,8 @@ export const baseTranslations = {
         { value: '30+', label: 'Projetos concluídos' },
         { value: '20+', label: 'Clientes atendidos' },
         { value: '100+', label: 'Features entregues' },
-        { value: '98', label: 'Média de SEO' },
-        { value: '96', label: 'Média de performance' },
+        { value: '93', label: 'Média de SEO' },
+        { value: '91', label: 'Média de performance' },
       ],
     },
     skills: {
@@ -87,13 +87,13 @@ export const baseTranslations = {
       cards: [
         {
           title: 'SEO',
-          score: '98',
+          score: '93',
           text: 'Construído para visibilidade e descoberta.',
           items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Dados estruturados'],
         },
         {
           title: 'Performance',
-          score: '96',
+          score: '91',
           text: 'Sites rápidos e otimizados por padrão.',
           items: ['Core Web Vitals', 'Carga rápida', 'Renderização eficiente', 'Assets otimizados'],
         },
@@ -144,9 +144,9 @@ export const baseTranslations = {
         },
       ],
       items: [
-        { title: 'WordPress/PHP', text: 'Temas customizados, CMS, WooCommerce, ACF, performance e SEO técnico.' },
-        { title: 'Front-end', text: 'Interfaces responsivas com React, Next.js, TypeScript, SCSS e acessibilidade.' },
-        { title: 'Gestão técnica', text: 'Planejamento, organização de fluxos, documentação e visão de entrega.' },
+        { title: 'WordPress/PHP', text: 'Temas customizados, CMS, WooCommerce, ACF, plugins, integrações, performance e SEO técnico para sites institucionais e comerciais.' },
+        { title: 'Front-end', text: 'Interfaces responsivas com React, Next.js, TypeScript, JavaScript, SCSS, componentização, acessibilidade e foco em experiência de uso.' },
+        { title: 'Gestão técnica', text: 'Planejamento, organização de fluxos, documentação, liderança de demandas, suporte a equipes e visão de entrega orientada a qualidade.' },
       ],
     },
     contact: {
@@ -248,8 +248,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       ],
       resumeBullets: ['4+ years experience', 'Full-Stack specialist', 'Problem solver and builder'],
       metrics: [
-        { title: 'SEO', score: '98', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Robots.txt'] },
-        { title: 'Performance', score: '96', items: ['Core Web Vitals', 'Fast Load', 'Optimized assets'] },
+        { title: 'SEO', score: '93', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Robots.txt'] },
+        { title: 'Performance', score: '91', items: ['Core Web Vitals', 'Fast Load', 'Optimized assets'] },
         { title: 'Accessibility', score: '100', items: ['Keyboard', 'Screen reader', 'Semantic HTML'] },
       ],
     },
@@ -264,8 +264,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
           { value: '30+', label: 'Projects Completed' },
           { value: '20+', label: 'Happy Clients' },
           { value: '100+', label: 'Custom Features Delivered' },
-          { value: '98', label: 'SEO Score Average' },
-          { value: '96', label: 'Performance Score Average' },
+          { value: '93', label: 'SEO Score Average' },
+          { value: '91', label: 'Performance Score Average' },
         ],
       },
       skills: {
@@ -284,8 +284,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
         description: 'Performance, visibility and accessibility are not afterthoughts. They are built into the architecture from the start.',
         chips: ['Optimized performance', 'Search ready', 'Accessible by design', 'Clean standards'],
         cards: [
-          { title: 'SEO', score: '98', text: 'Built for visibility and discoverability.', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Structured Data'] },
-          { title: 'Performance', score: '96', text: 'Fast and optimized sites by default.', items: ['Core Web Vitals', 'Fast Load', 'Efficient Rendering', 'Optimized Assets'] },
+          { title: 'SEO', score: '93', text: 'Built for visibility and discoverability.', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Structured Data'] },
+          { title: 'Performance', score: '91', text: 'Fast and optimized sites by default.', items: ['Core Web Vitals', 'Fast Load', 'Efficient Rendering', 'Optimized Assets'] },
           { title: 'Accessibility', score: '100', text: 'Usable by everyone, built with empathy.', items: ['Keyboard Navigation', 'Screen Reader Friendly', 'Color Contrast', 'Semantic HTML'] },
         ],
       },
@@ -302,9 +302,9 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
           { role: 'Frontend Developer', company: 'TDS Company', period: 'Jul/2021 - Aug/2022', description: 'Development of WordPress sites and web applications with React.' },
         ],
         items: [
-          { title: 'WordPress/PHP', text: 'Custom themes, CMS, WooCommerce, ACF, performance and technical SEO.' },
-          { title: 'Front-end', text: 'Responsive interfaces with React, Next.js, TypeScript, SCSS and accessibility.' },
-          { title: 'Technical management', text: 'Planning, workflow organization, documentation and delivery vision.' },
+          { title: 'WordPress/PHP', text: 'Custom themes, CMS, WooCommerce, ACF, plugins, integrations, performance and technical SEO for institutional and commercial websites.' },
+          { title: 'Front-end', text: 'Responsive interfaces with React, Next.js, TypeScript, JavaScript, SCSS, componentization, accessibility and user experience focus.' },
+          { title: 'Technical management', text: 'Planning, workflow organization, documentation, demand leadership, team support and quality-oriented delivery vision.' },
         ],
       },
       contact: {
@@ -373,8 +373,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       ],
       resumeBullets: ['4+ años de experiencia', 'Especialista Full-Stack', 'Problem solver y builder'],
       metrics: [
-        { title: 'SEO', score: '98', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Robots.txt'] },
-        { title: 'Performance', score: '96', items: ['Core Web Vitals', 'Carga rápida', 'Assets optimizados'] },
+        { title: 'SEO', score: '93', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Robots.txt'] },
+        { title: 'Performance', score: '91', items: ['Core Web Vitals', 'Carga rápida', 'Assets optimizados'] },
         { title: 'Accessibility', score: '100', items: ['Teclado', 'Lector de pantalla', 'HTML semántico'] },
       ],
     },
@@ -389,8 +389,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
           { value: '30+', label: 'Proyectos completados' },
           { value: '20+', label: 'Clientes atendidos' },
           { value: '100+', label: 'Features entregadas' },
-          { value: '98', label: 'Promedio SEO' },
-          { value: '96', label: 'Promedio performance' },
+          { value: '93', label: 'Promedio SEO' },
+          { value: '91', label: 'Promedio performance' },
         ],
       },
       skills: {
@@ -409,8 +409,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
         description: 'Performance, visibilidad y accesibilidad no son detalles finales. Forman parte de la arquitectura desde el inicio.',
         chips: ['Performance optimizada', 'Listo para búsqueda', 'Accesible por diseño', 'Estándares limpios'],
         cards: [
-          { title: 'SEO', score: '98', text: 'Construido para visibilidad y descubrimiento.', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Structured Data'] },
-          { title: 'Performance', score: '96', text: 'Sitios rápidos y optimizados por defecto.', items: ['Core Web Vitals', 'Fast Load', 'Efficient Rendering', 'Optimized Assets'] },
+          { title: 'SEO', score: '93', text: 'Construido para visibilidad y descubrimiento.', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Structured Data'] },
+          { title: 'Performance', score: '91', text: 'Sitios rápidos y optimizados por defecto.', items: ['Core Web Vitals', 'Fast Load', 'Efficient Rendering', 'Optimized Assets'] },
           { title: 'Accessibility', score: '100', text: 'Usable por todos, con empatía y criterio.', items: ['Keyboard Navigation', 'Screen Reader Friendly', 'Color Contrast', 'Semantic HTML'] },
         ],
       },
@@ -427,9 +427,9 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
           { role: 'Frontend Developer', company: 'TDS Company', period: 'Jul/2021 - Ago/2022', description: 'Desarrollo de sitios WordPress y aplicaciones web con React.' },
         ],
         items: [
-          { title: 'WordPress/PHP', text: 'Temas personalizados, CMS, WooCommerce, ACF, performance y SEO técnico.' },
-          { title: 'Front-end', text: 'Interfaces responsivas con React, Next.js, TypeScript, SCSS y accesibilidad.' },
-          { title: 'Gestión técnica', text: 'Planificación, organización de flujos, documentación y visión de entrega.' },
+          { title: 'WordPress/PHP', text: 'Temas personalizados, CMS, WooCommerce, ACF, plugins, integraciones, performance y SEO técnico para sitios institucionales y comerciales.' },
+          { title: 'Front-end', text: 'Interfaces responsivas con React, Next.js, TypeScript, JavaScript, SCSS, componentización, accesibilidad y foco en experiencia de uso.' },
+          { title: 'Gestión técnica', text: 'Planificación, organización de flujos, documentación, liderazgo de demandas, soporte a equipos y visión de entrega orientada a calidad.' },
         ],
       },
       contact: {

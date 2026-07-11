@@ -98,6 +98,7 @@ npm run start
 - Sitemap foi atualizado para remover a rota `/sobre`.
 - Secao de experiencia profissional recebeu os quatro botoes do modal de contato: e-mail, LinkedIn, GitHub e copia principal de e-mail com feedback visual.
 - Botoes de contato da secao de experiencia foram compactados para exibir apenas os nomes das acoes, sem icones ou links visiveis.
+- Numeros da secao Sobre mim passaram a animar em contagem progressiva ate o valor final quando entram na tela.
 
 ## Estrutura de cores e tokens
 
