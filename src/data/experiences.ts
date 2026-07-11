@@ -24,7 +24,7 @@ export const experiences: Experience[] = [
     summary:
       'Atuação em projetos digitais internacionais com foco em interfaces responsivas, manutenção front-end, WordPress, AEM, React, SCSS e adaptação de layouts para marcas globais.',
     stack: ['AEM', 'WordPress', 'React', 'SCSS', 'JavaScript', 'Front-end responsivo'],
-    note: 'Detalhes protegidos por NDA foram anonimizados.'
+    note: 'Projetos internacionais com foco em entrega visual consistente, responsividade e manutenção front-end.'
   },
   {
     company: 'JAZZZ Agência Digital',

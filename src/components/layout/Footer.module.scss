@@ -36,6 +36,8 @@
 .contactLink {
   color: $color-text-muted;
   font-size: $button-font-size;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .links a:hover,

@@ -19,8 +19,9 @@ Centralizar apresentação profissional, projetos, experiências, currículo, li
 ## Funcionalidades
 
 - Página inicial com hero, apresentação, stacks, projetos, experiência e CTA de contato
-- Páginas para projetos, experiência, sobre, currículo e contato
-- Modal de contato com abertura a partir de diferentes pontos do site
+- Páginas para projetos, experiência, sobre e currículo
+- Modal de contato com abertura a partir de diferentes pontos do site, sem rota dedicada
+- Botão flutuante de contato no canto inferior direito com animação recorrente
 - SEO básico com metadata, sitemap e robots
 - Acessibilidade com skip link, semântica e foco visível
 - Arquivos locais para currículo e imagens
@@ -57,15 +58,39 @@ npm run start
 - CSS modularizado com SCSS Modules
 - Design responsivo e mobile-first
 
+## Registro de mudanças
+
+### 2026-07-11
+
+- Contato passou a abrir em modal, sem redirecionar para uma rota dedicada.
+- Card de contato passou a renderizar apenas os botões de ação, usando o padrão visual dos botões do site e sem fundo extra na home.
+- Botão de e-mail foi simplificado para copiar o endereço e exibir feedback visual de cópia.
+- Popup de contato mantém título e descrição, sem exibir e-mail ou localização como campos.
+- Botões do popup de contato foram ordenados verticalmente e ocupam 100% da largura disponível.
+- Modal de contato foi mantido na mesma lógica de ações: enviar e-mail, acessar LinkedIn e acessar GitHub.
+- Botão flutuante de contato foi adicionado no canto inferior direito com ícone e animação recorrente.
+- Botões textuais foram padronizados com o mesmo tamanho de fonte e ajuste horizontal sem quebra de texto.
+- Skill badges receberam hover gradual com tons de roxo e transição suave.
+- Cases sob NDA e referências relacionadas foram removidos da interface e dos dados.
+- Rota `/contato` foi removida do sitemap após a mudança para modal.
+- Páginas com tradução dinâmica foram separadas em wrappers server e componentes client para manter `metadata` compatível com o App Router.
+- Cache `.next` foi limpo e o build de produção voltou a compilar com sucesso.
+- Home refeita no padrão visual dark dashboard das novas referências, com hero em três colunas, cards de projetos, painel de código, métricas técnicas e CTA de contato.
+- Seções de About, Skills, Projetos, Diferenciais Técnicos, Resume e Contato foram reorganizadas em painéis glassmorphism com bordas azul/roxo e maior densidade visual.
+- Modal de contato foi redesenhado com conteúdo contextual, status de disponibilidade, cards para e-mail/LinkedIn/GitHub e botão principal para copiar e-mail.
+- Header foi atualizado para o padrão da referência com marca "RV", navegação centralizada e CTA de contato.
+- Cards de projetos passaram a usar as imagens finais anexadas em `public/assets/projects`, com visual compacto de showcase.
+- Tokens globais de cor, mixins e fundo da aplicação foram ajustados para a identidade visual azul/roxa com fundo digital.
+
 ## Estrutura de cores e tokens
 
 O projeto centraliza a paleta visual em [src/styles/variables.scss](src/styles/variables.scss) para facilitar manutenção e consistência visual. A estrutura atual contempla todas as variáveis de cor abaixo:
 
 - Cores base
-  - $color-bg: #0f172a
-  - $color-surface: #111827
-  - $color-surface-soft: #1e293b
-  - $color-surface-elevated: rgba(17, 24, 39, 0.95)
+  - $color-bg: #030817
+  - $color-surface: #071225
+  - $color-surface-soft: rgba(12, 24, 48, 0.86)
+  - $color-surface-elevated: rgba(10, 20, 40, 0.94)
 
 - Cores de texto
   - $color-text: #f8fafc
@@ -88,8 +113,8 @@ O projeto centraliza a paleta visual em [src/styles/variables.scss](src/styles/v
 - Cores de suporte
   - $color-success: #22c55e
   - $color-warning: #f59e0b
-  - $color-border: #334155
-  - $color-border-strong: rgba(167, 139, 250, 0.35)
+  - $color-border: rgba(94, 135, 220, 0.2)
+  - $color-border-strong: rgba(137, 92, 246, 0.46)
   - $color-overlay: rgba(2, 6, 23, 0.78)
   - $color-white: #ffffff
 

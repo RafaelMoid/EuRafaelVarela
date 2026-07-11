@@ -4,6 +4,7 @@ import '@/styles/globals.scss';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ContactModal } from '@/components/contact/ContactModal';
+import { FloatingContactButton } from '@/components/contact/FloatingContactButton';
 import { constructMetadata } from '@/utils/seo';
 import { LanguageProvider } from '@/components/language/LanguageProvider';
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main id="main-content">{children}</main>
           <Footer />
+          <FloatingContactButton />
           <ContactModal />
         </LanguageProvider>
       </body>

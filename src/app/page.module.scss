@@ -2,130 +2,360 @@
 @use '@/styles/mixins' as *;
 
 .section {
-  padding: 2.5rem 0;
+  padding: 2rem 0;
 }
 
-.aboutGrid,
-.skillGrid,
-.projectGrid,
-.resumeGrid,
-.ndaGrid {
+.aboutPanel,
+.skillsPanel,
+.diffPanel,
+.resumePanel,
+.contactSection {
+  @include card;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.aboutPanel {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1fr);
+  gap: 1.5rem;
+}
+
+.panelIntro,
+.diffIntro {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.panelIcon {
+  @include icon-tile;
+  font-weight: 900;
+}
+
+.panelIntro h2,
+.panelHeading h2,
+.sectionHeader h2,
+.diffIntro h2,
+.resumeProfile h2,
+.contactSection h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.05;
+}
+
+.gradientLead,
+.diffIntro strong {
+  @include gradient-text;
+}
+
+.gradientLead {
+  margin: 0;
+  font-size: clamp(1.7rem, 3.3vw, 3rem);
+  font-weight: 900;
+  line-height: 1.12;
+}
+
+.panelIntro p,
+.diffIntro p,
+.contactSection p {
+  margin: 0;
+  color: $color-text-muted;
+}
+
+.aboutTags,
+.diffChips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.aboutTags span,
+.diffChips span {
+  min-height: 3.7rem;
+  padding: 0.85rem;
+  border: 1px solid $color-border;
+  border-radius: 11px;
+  background: rgba(4, 12, 28, 0.58);
+  color: $color-text-muted;
+  font-weight: 700;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.statCard {
+  display: grid;
+  place-items: center;
+  min-height: 11rem;
+  padding: 1rem;
+  border: 1px solid $color-border;
+  border-radius: 13px;
+  background: rgba(4, 12, 28, 0.54);
+  text-align: center;
+}
+
+.statCard strong {
+  @include gradient-text;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1;
+}
+
+.statCard span {
+  color: $color-text-muted;
+  font-size: 1rem;
+}
+
+.aboutFooter {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid $color-border;
+}
+
+.aboutFooter span {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.1);
+  color: $color-text;
+  font-weight: 800;
+}
+
+.panelHeading,
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.sectionHeader a {
+  padding: 0.75rem 1rem;
+  border: 1px solid $color-border;
+  border-radius: 10px;
+  color: $color-primary-light;
+  font-weight: 800;
+}
+
+.skillRows {
   display: grid;
   gap: 1rem;
 }
 
-.sliderWrap {
-  overflow-x: auto;
-  padding: 0.25rem 0 0.9rem;
-  scroll-snap-type: x proximity;
-  scrollbar-width: thin;
-}
-
-.sliderWrap::-webkit-scrollbar {
-  height: 8px;
-}
-
-.sliderWrap::-webkit-scrollbar-thumb {
-  background: rgba(96, 165, 250, 0.35);
-  border-radius: 999px;
-}
-
-.sliderRail {
-  display: flex;
+.skillRow {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.25fr) 1fr;
   gap: 1rem;
-  min-width: max-content;
-  padding-bottom: 0.25rem;
-  align-items: stretch;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid $color-border;
+  border-radius: 14px;
+  background: linear-gradient(100deg, rgba(4, 12, 28, 0.86), rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.09));
 }
 
-.sliderItem {
-  flex: 0 0 min(82vw, 360px);
-  scroll-snap-align: start;
+.skillRow h3,
+.skillRow p {
+  margin: 0;
 }
 
-.aboutGrid {
-  grid-template-columns: 1.3fr 0.7fr;
-}
-
-.textBlock p {
+.skillRow p {
+  margin-top: 0.45rem;
   color: $color-text-muted;
-  margin: 0 0 1rem;
-}
-
-.valueCard {
-  @include card;
-  padding: 1.2rem;
-  height: fit-content;
-}
-
-.valueCard h3,
-.skillGroup h3,
-.experienceCard h3 {
-  margin-top: 0;
-}
-
-.valueCard ul {
-  padding-left: 1.1rem;
-  color: $color-text-muted;
-}
-
-.skillGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.skillGroup {
-  @include card;
-  padding: 1.1rem;
 }
 
 .skillList {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.65rem;
 }
 
 .projectGrid {
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-.experienceSummary {
+.diffPanel {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.55fr) 1fr;
+  gap: 2rem;
+}
+
+.diffIntro > span {
+  width: fit-content;
+  padding: 0.7rem 1rem;
+  border: 1px solid $color-border;
+  border-radius: 999px;
+  color: $color-text-soft;
+}
+
+.diffCards {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.experienceCard {
-  @include card;
-  padding: 1rem;
+.diffCard {
+  display: grid;
+  grid-template-columns: 7rem 1fr minmax(160px, 0.55fr);
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.2rem;
+  border: 1px solid $color-border-strong;
+  border-radius: 16px;
+  background: linear-gradient(110deg, rgba(8, 17, 35, 0.9), rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.12));
 }
 
-.experienceCard p,
-.experienceCard span {
+.diffScore {
+  display: grid;
+  place-items: center;
+  width: 6rem;
+  height: 6rem;
+  border: 8px solid $color-success;
+  border-radius: 999px;
+  color: $color-success;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.diffCard h3,
+.diffCard p,
+.diffCard ul {
+  margin: 0;
+}
+
+.diffCard ul {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0;
+  list-style: none;
   color: $color-text-muted;
 }
 
-.ndaGrid,
-.resumeGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.diffCard li::before {
+  content: '✓';
+  margin-right: 0.45rem;
+  color: $color-success;
 }
 
-@media (max-width: 900px) {
-  .aboutGrid,
-  .projectGrid,
-  .experienceSummary,
-  .ndaGrid,
-  .resumeGrid,
-  .skillGrid {
+.diffCard p {
+  color: $color-text-muted;
+}
+
+.resumePanel {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.42fr) 1fr minmax(260px, 0.45fr);
+  gap: 1.25rem;
+}
+
+.resumeProfile,
+.timeline,
+.resumeSide {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid $color-border;
+  border-radius: 14px;
+  background: rgba(4, 12, 28, 0.58);
+}
+
+.resumeProfile img {
+  width: 100%;
+  max-height: 17rem;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.resumeProfile p {
+  margin: 0;
+  color: $color-primary-light;
+  font-weight: 800;
+}
+
+.resumeProfile a {
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(100deg, #1d9bf0, #4f46e5 48%, #a855f7);
+  color: $color-white;
+  font-weight: 900;
+}
+
+.timeline h3,
+.resumeSide h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.timeline article {
+  position: relative;
+  display: grid;
+  gap: 0.3rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(96, 165, 250, 0.26);
+}
+
+.timeline span {
+  color: $color-primary-light;
+}
+
+.timeline p,
+.resumeSide p {
+  margin: 0;
+  color: $color-text-muted;
+}
+
+.resumeSide div {
+  padding: 0.9rem;
+  border: 1px solid $color-border;
+  border-radius: 10px;
+}
+
+.contactSection {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .aboutPanel,
+  .diffPanel,
+  .resumePanel,
+  .contactSection {
     grid-template-columns: 1fr;
   }
+
+  .projectGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media (min-width: 900px) {
-  .sliderWrap {
-    overflow-x: auto;
+@media (max-width: 760px) {
+  .aboutTags,
+  .statsGrid,
+  .aboutFooter,
+  .skillRow,
+  .projectGrid,
+  .diffCard {
+    grid-template-columns: 1fr;
   }
 
-  .sliderItem {
-    flex-basis: 320px;
+  .diffScore {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .panelHeading,
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

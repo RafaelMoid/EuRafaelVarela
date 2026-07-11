@@ -29,8 +29,8 @@ export function Footer() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <p>© {year} {profile.name}. Todos os direitos reservados.</p>
-        <p>Portfólio desenvolvido com Next.js, TypeScript e SCSS Modules.</p>
+        <p>{translate.footer.copyright.replace('{year}', String(year)).replace('{name}', profile.name)}</p>
+        <p>{translate.footer.techStack}</p>
       </div>
     </footer>
   );

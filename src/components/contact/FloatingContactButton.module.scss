@@ -1,0 +1,64 @@
+@use '@/styles/variables' as *;
+
+.button {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.75rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.7rem;
+  height: 3.7rem;
+  border: 1px solid rgba(216, 180, 254, 0.4);
+  border-radius: 999px;
+  background: linear-gradient(135deg, $color-primary, $color-secondary);
+  color: $color-white;
+  cursor: pointer;
+  box-shadow: 0 16px 36px rgba(76, 29, 149, 0.38);
+  transition: transform $transition, box-shadow $transition;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 20px 44px rgba(109, 40, 217, 0.48);
+}
+
+.pulse {
+  position: absolute;
+  inset: -0.45rem;
+  border: 1px solid rgba(167, 139, 250, 0.42);
+  border-radius: inherit;
+  animation: contact-pulse 1800ms ease-out infinite;
+}
+
+.icon {
+  position: relative;
+  width: 1.55rem;
+  height: 1.55rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes contact-pulse {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.92);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+  }
+}

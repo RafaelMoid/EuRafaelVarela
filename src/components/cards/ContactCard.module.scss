@@ -2,44 +2,87 @@
 @use '@/styles/mixins' as *;
 
 .card {
+  width: 100%;
+}
+
+.framed {
   @include card;
+  display: grid;
+  gap: 1rem;
   padding: 1.25rem;
   border: 1px solid $color-border-strong;
 }
 
+.content {
+  display: grid;
+  gap: 0.9rem;
+}
+
 .title {
-  margin: 0 0 0.4rem;
+  margin: 0;
 }
 
 .description {
-  margin: 0 0 0.9rem;
+  margin: 0;
   color: $color-text-muted;
 }
 
 .actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
-  flex-wrap: wrap;
 }
 
-.link {
+.framed .actions {
+  display: grid;
+}
+
+.actionButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.7rem 0.95rem;
-  border: 0;
-  border-radius: 999px;
-  background: $color-hover-soft;
-  color: $color-primary-light;
+  gap: 0.5rem;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
   font-size: $button-font-size;
   font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
+  text-align: center;
   text-decoration: none;
-  transition: transform $transition, background $transition;
+  transition: transform $transition, background $transition, border-color $transition, color $transition;
 }
 
-.link:hover,
-.link:focus-visible {
+.framed .actionButton {
+  width: 100%;
+}
+
+.primary {
+  background: linear-gradient(135deg, $color-primary, $color-secondary);
+  color: $color-white;
+}
+
+.secondary {
+  border-color: $color-border;
+  background: rgba(7, 18, 37, 0.72);
+  color: $color-text;
+}
+
+.actionButton:hover,
+.actionButton:focus-visible {
   transform: translateY(-2px);
-  background: $color-hover;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.18);
+}
+
+@media (max-width: 560px) {
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .actionButton {
+    width: 100%;
+  }
 }

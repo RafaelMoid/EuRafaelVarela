@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { ContactTrigger } from '@/components/contact/ContactTrigger';
-import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import styles from './Header.module.scss';
 
@@ -21,39 +20,39 @@ export function Header() {
     { href: '/experiencia', label: translate.nav.experience },
     { href: '/sobre', label: translate.nav.about },
     { href: '/curriculo', label: translate.nav.resume },
-    { href: '/contato', label: translate.nav.contact },
+    { href: 'contact', label: translate.nav.contact },
   ];
 
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.brand} onClick={closeMenu} aria-label="Início do portfólio">
-          Rafael Varela
+        <Link href="/" className={styles.brand} onClick={closeMenu} aria-label="Inicio do portfolio">
+          RV
         </Link>
-        <div className={styles.languageWrapper}>
-          <LanguageSelector />
-        </div>
+
         <button
           className={styles.menuButton}
           type="button"
           aria-expanded={menuOpen}
           aria-controls="site-navigation"
-          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-label={menuOpen ? translate.header.closeMenu : translate.header.openMenu}
           onClick={() => setMenuOpen((value) => !value)}
         >
           <span />
           <span />
           <span />
         </button>
-        <nav id="site-navigation" className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Navegação principal">
+
+        <nav id="site-navigation" className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Navegacao principal">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
 
-            if (item.href === '/contato') {
+            if (item.href === 'contact') {
               return (
                 <ContactTrigger
                   key={item.href}
                   className={`${styles.link} ${styles.contactButton} ${isActive ? styles.active : ''}`}
+                  onClick={closeMenu}
                 >
                   {item.label}
                 </ContactTrigger>
@@ -73,6 +72,10 @@ export function Header() {
             );
           })}
         </nav>
+
+        <ContactTrigger className={styles.desktopContact} onClick={closeMenu}>
+          Contact Me
+        </ContactTrigger>
       </div>
     </header>
   );

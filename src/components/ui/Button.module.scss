@@ -10,6 +10,8 @@
   border: 1px solid transparent;
   font-size: $button-font-size;
   font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
   transition: transform $transition, background $transition, color $transition, border-color $transition;
 }
 
