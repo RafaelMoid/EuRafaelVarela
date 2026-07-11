@@ -37,6 +37,12 @@
   gap: 0.45rem;
 }
 
+.languageWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .link {
   padding: 0.58rem 0.85rem;
   border-radius: 12px;
@@ -132,5 +138,10 @@
 
   .desktopContact {
     display: none;
+  }
+
+  .languageWrapper {
+    order: 3;
+    width: 100%;
   }
 }

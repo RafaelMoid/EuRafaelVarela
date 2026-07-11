@@ -40,18 +40,25 @@
   background: rgba(124, 58, 237, 0.28);
   color: $color-text;
   cursor: pointer;
-  transition: transform $transition, background $transition;
+  transition: background $transition;
 }
 
 .closeButton:hover,
 .closeButton:focus-visible {
-  transform: rotate(90deg);
   background: rgba(167, 139, 250, 0.28);
 }
 
 .closeButton span {
+  display: inline-block;
   font-size: 1.5rem;
   line-height: 1;
+  transform-origin: center;
+  transition: transform $transition;
+}
+
+.closeButton:hover span,
+.closeButton:focus-visible span {
+  transform: rotate(90deg);
 }
 
 .copy {

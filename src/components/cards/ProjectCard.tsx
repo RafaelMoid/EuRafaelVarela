@@ -1,9 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import { Project } from '@/data/projects';
 import styles from './ProjectCard.module.scss';
 
 export function ProjectCard({ project }: { project: Project }) {
+  const { translate } = useLanguage();
+
   return (
     <article className={styles.card}>
       <div className={styles.imageWrap}>
@@ -18,7 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
         <Link className={styles.link} href={`/projetos/${project.slug}`}>
-          Ver detalhes →
+          {translate.home.projects.details} →
         </Link>
       </div>
     </article>

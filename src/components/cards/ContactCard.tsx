@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import { profile } from '@/data/profile';
 import styles from './ContactCard.module.scss';
 
 export function ContactCard({ framed = false, showContent = false, titleId }: { framed?: boolean; showContent?: boolean; titleId?: string }) {
   const [copied, setCopied] = useState(false);
+  const { translate } = useLanguage();
 
   const fallbackCopyEmail = () => {
     const textarea = document.createElement('textarea');
@@ -57,22 +59,20 @@ export function ContactCard({ framed = false, showContent = false, titleId }: { 
       {showContent ? (
         <div className={styles.content}>
           <h3 className={styles.title} id={titleId}>
-            Pronto para conversar?
+            {translate.home.contact.title}
           </h3>
-          <p className={styles.description}>
-            Estou disponível para oportunidades em desenvolvimento web, WordPress/PHP, front-end, web/fullstack e gestão técnica de tecnologia.
-          </p>
+          <p className={styles.description}>{translate.home.contact.description}</p>
         </div>
       ) : null}
       <div className={styles.actions} aria-label="Acoes de contato">
         <button className={`${styles.actionButton} ${styles.primary}`} type="button" onClick={handleEmailClick}>
-          {copied ? 'E-mail copiado' : 'Copiar meu e-mail'}
+          {copied ? translate.contactActions.copiedEmail : translate.contactActions.copyEmail}
         </button>
         <a className={`${styles.actionButton} ${styles.secondary}`} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-          Acesse meu LinkedIn
+          {translate.contactActions.linkedin}
         </a>
         <a className={`${styles.actionButton} ${styles.secondary}`} href={profile.github} target="_blank" rel="noopener noreferrer">
-          Acesse meu GitHub
+          {translate.contactActions.github}
         </a>
       </div>
     </article>

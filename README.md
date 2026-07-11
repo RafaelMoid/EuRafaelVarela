@@ -81,6 +81,14 @@ npm run start
 - Header foi atualizado para o padrão da referência com marca "RV", navegação centralizada e CTA de contato.
 - Cards de projetos passaram a usar as imagens finais anexadas em `public/assets/projects`, com visual compacto de showcase.
 - Tokens globais de cor, mixins e fundo da aplicação foram ajustados para a identidade visual azul/roxa com fundo digital.
+- Conteúdo novo da home, hero, modal e botões de contato foi conectado ao sistema de idiomas.
+- Seletor de idioma voltou ao header e permite alternar entre português, inglês e espanhol.
+- Idioma inicial usa o idioma do navegador quando não existe preferência salva no `localStorage`.
+- Traduções passaram a ser estáticas no projeto, evitando dependência de chamada externa para renderizar textos traduzidos.
+- Botão de fechar do modal foi ajustado para rotacionar apenas o "x" interno, sem deslocar o botão.
+- Card visual de código do hero foi removido para evitar distorções e simplificar a composição.
+- Etiqueta superior do hero foi removida para reduzir ruído visual no layout.
+- Strip de qualidades do hero passou a usar colunas automáticas para caber corretamente em larguras intermediárias.
 
 ## Estrutura de cores e tokens
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { baseTranslations, defaultLanguage, languageOptions, type LanguageCode } from '@/data/translations';
+import { baseTranslations, defaultLanguage, languageOptions, translations, type LanguageCode } from '@/data/translations';
 
 type TranslationRoot = typeof baseTranslations;
 
@@ -38,49 +38,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     window.localStorage.setItem('selectedLanguage', language);
+    document.documentElement.lang = language;
   }, [language]);
 
   useEffect(() => {
-    if (language === 'pt-BR') {
-      setTranslate(baseTranslations);
-      return;
-    }
-
-    const cached = window.localStorage.getItem(`translations-${language}`);
-    if (cached) {
-      setTranslate(JSON.parse(cached) as TranslationRoot);
-      return;
-    }
-
-    const controller = new AbortController();
-    const translateData = async () => {
-      try {
-        const response = await fetch('/api/translate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ source: baseTranslations, target: language }),
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error('Translation request failed');
-        }
-
-        const data = await response.json();
-        if (data?.translated) {
-          setTranslate(data.translated);
-          window.localStorage.setItem(`translations-${language}`, JSON.stringify(data.translated));
-        }
-      } catch {
-        setTranslate(baseTranslations);
-      }
-    };
-
-    translateData();
-
-    return () => {
-      controller.abort();
-    };
+    setTranslate(translations[language] ?? baseTranslations);
   }, [language]);
 
   const contextValue = useMemo(

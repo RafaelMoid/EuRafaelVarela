@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { ContactTrigger } from '@/components/contact/ContactTrigger';
+import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import styles from './Header.module.scss';
 
@@ -73,8 +74,12 @@ export function Header() {
           })}
         </nav>
 
+        <div className={styles.languageWrapper}>
+          <LanguageSelector />
+        </div>
+
         <ContactTrigger className={styles.desktopContact} onClick={closeMenu}>
-          Contact Me
+          {translate.nav.contactCta}
         </ContactTrigger>
       </div>
     </header>

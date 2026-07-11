@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ContactCard } from '@/components/cards/ContactCard';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import { Container } from '@/components/ui/Container';
 import { SkillBadge } from '@/components/ui/SkillBadge';
 import { projects } from '@/data/projects';
@@ -12,43 +13,10 @@ import { skillGroups } from '@/data/skills';
 import { profile } from '@/data/profile';
 import styles from './page.module.scss';
 
-const aboutStats = [
-  { value: '4+', label: 'Years Experience' },
-  { value: '30+', label: 'Projects Completed' },
-  { value: '20+', label: 'Happy Clients' },
-  { value: '100+', label: 'Custom Features Delivered' },
-  { value: '98', label: 'SEO Score Average' },
-  { value: '96', label: 'Performance Score Average' },
-];
-
-const differentiators = [
-  {
-    title: 'SEO',
-    score: '98',
-    text: 'Construido para visibilidade e descoberta.',
-    items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Structured Data'],
-  },
-  {
-    title: 'Performance',
-    score: '96',
-    text: 'Sites rapidos e otimizados por padrao.',
-    items: ['Core Web Vitals', 'Fast Load', 'Efficient Rendering', 'Optimized Assets'],
-  },
-  {
-    title: 'Accessibility',
-    score: '100',
-    text: 'Usavel por todos, com empatia e criterio.',
-    items: ['Keyboard Navigation', 'Screen Reader Friendly', 'Color Contrast', 'Semantic HTML'],
-  },
-];
-
-const resumeItems = [
-  { title: 'WordPress/PHP', text: 'Temas customizados, CMS, WooCommerce, ACF, performance e SEO tecnico.' },
-  { title: 'Front-end', text: 'Interfaces responsivas com React, Next.js, TypeScript, SCSS e acessibilidade.' },
-  { title: 'Gestao tecnica', text: 'Planejamento, organizacao de fluxos, documentacao e visao de entrega.' },
-];
-
 export default function HomePage() {
+  const { translate } = useLanguage();
+  const home = translate.home;
+
   return (
     <>
       <HeroSection />
@@ -58,21 +26,17 @@ export default function HomePage() {
           <div className={styles.aboutPanel}>
             <div className={styles.panelIntro}>
               <span className={styles.panelIcon} aria-hidden="true">&lt;/&gt;</span>
-              <h2 id="about-title">About Me</h2>
-              <p className={styles.gradientLead}>
-                I build fast, accessible and SEO-friendly web experiences that deliver results.
-              </p>
-              <p>
-                Sou Rafael Varela, desenvolvedor web com 4+ anos de experiencia criando sites, sistemas e interfaces modernas. Tenho foco em WordPress/PHP, front-end, performance, acessibilidade e organizacao tecnica.
-              </p>
+              <h2 id="about-title">{home.about.title}</h2>
+              <p className={styles.gradientLead}>{home.about.lead}</p>
+              <p>{home.about.description}</p>
               <div className={styles.aboutTags}>
-                {['WordPress & PHP', 'Front-end Development', 'Web Systems', 'SEO & Performance', 'Accessibility', 'Technical Management'].map((item) => (
+                {home.about.tags.map((item) => (
                   <span key={item}>{item}</span>
                 ))}
               </div>
             </div>
             <div className={styles.statsGrid}>
-              {aboutStats.map((item) => (
+              {home.about.stats.map((item) => (
                 <div key={item.label} className={styles.statCard}>
                   <strong>{item.value}</strong>
                   <span>{item.label}</span>
@@ -80,9 +44,9 @@ export default function HomePage() {
               ))}
             </div>
             <div className={styles.aboutFooter}>
-              <span>Clean Code</span>
-              <span>Technical Vision</span>
-              <span>Delivery Focus</span>
+              {home.about.footer.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
           </div>
         </Container>
@@ -93,14 +57,14 @@ export default function HomePage() {
           <div className={styles.skillsPanel}>
             <div className={styles.panelHeading}>
               <span className={styles.panelIcon} aria-hidden="true">&lt;/&gt;</span>
-              <h2 id="skills-title">Skills & Technologies</h2>
+              <h2 id="skills-title">{home.skills.title}</h2>
             </div>
             <div className={styles.skillRows}>
               {skillGroups.map((group) => (
                 <div key={group.title} className={styles.skillRow}>
                   <div>
                     <h3>{group.title}</h3>
-                    <p>{group.title.includes('WordPress') ? 'Construindo experiencias rapidas e flexiveis.' : 'Tecnologias aplicadas em entregas reais.'}</p>
+                    <p>{group.title.includes('WordPress') ? home.skills.wordpressDescription : home.skills.defaultDescription}</p>
                   </div>
                   <div className={styles.skillList}>
                     {group.items.slice(0, 8).map((item) => (
@@ -117,8 +81,8 @@ export default function HomePage() {
       <section className={styles.section} aria-labelledby="projects-title">
         <Container>
           <div className={styles.sectionHeader}>
-            <h2 id="projects-title">Projetos em destaque</h2>
-            <Link href="/projetos">Ver todos os projetos</Link>
+            <h2 id="projects-title">{home.projects.title}</h2>
+            <Link href="/projetos">{home.projects.cta}</Link>
           </div>
           <div className={styles.projectGrid}>
             {projects.slice(1).map((project) => (
@@ -132,18 +96,17 @@ export default function HomePage() {
         <Container>
           <div className={styles.diffPanel}>
             <div className={styles.diffIntro}>
-              <span>Technical Differentiators</span>
-              <h2 id="differentiators-title">Built Different. <strong>Built to Perform.</strong></h2>
-              <p>Performance, visibilidade e acessibilidade nao sao detalhes finais. Eles fazem parte da arquitetura desde o inicio.</p>
+              <span>{home.differentiators.eyebrow}</span>
+              <h2 id="differentiators-title">{home.differentiators.titleStart} <strong>{home.differentiators.titleHighlight}</strong></h2>
+              <p>{home.differentiators.description}</p>
               <div className={styles.diffChips}>
-                <span>Optimized Performance</span>
-                <span>Search Ready</span>
-                <span>Accessible by Design</span>
-                <span>Clean Standards</span>
+                {home.differentiators.chips.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
               </div>
             </div>
             <div className={styles.diffCards}>
-              {differentiators.map((item) => (
+              {home.differentiators.cards.map((item) => (
                 <article key={item.title} className={styles.diffCard}>
                   <div className={styles.diffScore}>{item.score}</div>
                   <div>
@@ -167,31 +130,23 @@ export default function HomePage() {
           <div className={styles.resumePanel}>
             <div className={styles.resumeProfile}>
               <Image src="/assets/profile/rafael-varela.webp" alt="Foto profissional de Rafael Varela" width={280} height={280} />
-              <h2 id="resume-title">Rafael Varela</h2>
-              <p>Web Developer</p>
-              <Link href={profile.cvPath}>View Full Resume</Link>
+              <h2 id="resume-title">{home.resume.title}</h2>
+              <p>{home.resume.role}</p>
+              <Link href={profile.cvPath}>{home.resume.cta}</Link>
             </div>
             <div className={styles.timeline}>
-              <h3>Experience</h3>
-              <article>
-                <strong>Senior Web Developer</strong>
-                <span>2022 - Present</span>
-                <p>Desenvolvimento de plataformas, sites institucionais, dashboards e solucoes web com foco em entrega e qualidade.</p>
-              </article>
-              <article>
-                <strong>Web Developer</strong>
-                <span>2020 - 2022</span>
-                <p>Construcao de websites responsivos, temas WordPress, interfaces e componentes reutilizaveis.</p>
-              </article>
-              <article>
-                <strong>Junior Developer</strong>
-                <span>2018 - 2020</span>
-                <p>Manutencao de sites, paginas de campanha, ajustes de front-end e suporte tecnico.</p>
-              </article>
+              <h3>{home.resume.experienceTitle}</h3>
+              {home.resume.timeline.map((item) => (
+                <article key={`${item.role}-${item.period}`}>
+                  <strong>{item.role}</strong>
+                  <span>{item.period}</span>
+                  <p>{item.description}</p>
+                </article>
+              ))}
             </div>
             <div className={styles.resumeSide}>
-              <h3>Skills</h3>
-              {resumeItems.map((item) => (
+              <h3>{home.resume.sideTitle}</h3>
+              {home.resume.items.map((item) => (
                 <div key={item.title}>
                   <strong>{item.title}</strong>
                   <p>{item.text}</p>
@@ -207,8 +162,8 @@ export default function HomePage() {
           <div className={styles.contactSection}>
             <div>
               <span className={styles.panelIcon} aria-hidden="true">@</span>
-              <h2 id="contact-title">Vamos conversar</h2>
-              <p>Estou disponivel para projetos web, WordPress/PHP, front-end, web/fullstack e gestao tecnica de tecnologia.</p>
+              <h2 id="contact-title">{home.contact.title}</h2>
+              <p>{home.contact.description}</p>
             </div>
             <ContactCard />
           </div>

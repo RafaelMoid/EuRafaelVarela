@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import { profile } from '@/data/profile';
 import styles from './ContactModal.module.scss';
 
@@ -19,6 +20,8 @@ const contactItems = [
 export function ContactModal() {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const { translate } = useLanguage();
+  const content = translate.contactModal;
 
   useEffect(() => {
     const handleOpen = () => setOpen(true);
@@ -85,23 +88,23 @@ export function ContactModal() {
         aria-labelledby="contact-modal-title"
         onClick={(event) => event.stopPropagation()}
       >
-        <button className={styles.closeButton} type="button" onClick={() => setOpen(false)} aria-label="Fechar modal de contato">
+        <button className={styles.closeButton} type="button" onClick={() => setOpen(false)} aria-label={content.close}>
           <span aria-hidden="true">x</span>
         </button>
 
         <div className={styles.copy}>
           <span className={styles.icon} aria-hidden="true">...</span>
-          <h2 id="contact-modal-title">Contact</h2>
+          <h2 id="contact-modal-title">{content.title}</h2>
           <div className={styles.shortLine} aria-hidden="true" />
-          <p>
-            Estou disponivel para oportunidades em desenvolvimento web, WordPress/PHP, front-end, web/full-stack e gestao tecnica. Vamos construir algo excepcional juntos.
-          </p>
-          <strong className={styles.available}>Available for work</strong>
+          <p>{content.description}</p>
+          <strong className={styles.available}>{content.available}</strong>
 
           <div className={styles.reasons}>
-            <span><strong>Fast Response</strong> Retorno objetivo</span>
-            <span><strong>Professional</strong> Entrega clara</span>
-            <span><strong>Open to Ideas</strong> Vamos discutir</span>
+            {content.reasons.map((item) => (
+              <span key={item.title}>
+                <strong>{item.title}</strong> {item.text}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -109,8 +112,8 @@ export function ContactModal() {
           <button className={styles.actionCard} type="button" onClick={copyEmail}>
             <span className={styles.actionIcon} aria-hidden="true">@</span>
             <span>
-              <strong>Email</strong>
-              <small>{copied ? 'E-mail copiado' : profile.email}</small>
+              <strong>{content.email}</strong>
+              <small>{copied ? content.copiedMain : profile.email}</small>
             </span>
             <b aria-hidden="true">→</b>
           </button>
@@ -127,11 +130,11 @@ export function ContactModal() {
           ))}
 
           <button className={styles.primaryAction} type="button" onClick={copyEmail}>
-            {copied ? 'E-mail copiado' : 'Copiar meu e-mail'}
+            {copied ? content.copiedMain : content.copyMain}
           </button>
         </div>
 
-        <p className={styles.privacy}>Suas informacoes ficam seguras comigo. Respeito sua privacidade.</p>
+        <p className={styles.privacy}>{content.privacy}</p>
       </div>
     </div>,
     document.body

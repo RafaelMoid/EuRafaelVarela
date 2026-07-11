@@ -2,10 +2,10 @@
 
 .selector {
   display: inline-flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 0.5rem;
   color: $color-text;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
 .label {
@@ -14,13 +14,20 @@
 }
 
 .select {
-  min-width: 10rem;
-  padding: 0.6rem 0.75rem;
-  border-radius: 999px;
+  min-width: 8.6rem;
+  padding: 0.58rem 0.75rem;
+  border-radius: 10px;
   border: 1px solid $color-border;
-  background: $color-surface;
+  background: rgba(7, 18, 37, 0.78);
   color: $color-text;
   outline: none;
+}
+
+@media (max-width: 860px) {
+  .selector,
+  .select {
+    width: 100%;
+  }
 }
 
 .select:focus-visible {
