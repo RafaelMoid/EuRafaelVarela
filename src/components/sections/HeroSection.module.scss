@@ -7,7 +7,7 @@
   grid-template-columns: minmax(320px, 0.95fr) minmax(420px, 1.25fr) minmax(300px, 0.82fr);
   gap: 1.25rem;
   padding: 3rem 0 2.25rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .left,
@@ -15,6 +15,13 @@
 .right {
   display: grid;
   gap: 1rem;
+  height: 100%;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.center {
+  grid-template-rows: 1fr;
 }
 
 .title {
@@ -47,7 +54,6 @@
 .qualityStrip,
 .skillsMini,
 .projectsPanel,
-.resumePanel,
 .profileCard,
 .metricCard,
 .contactPanel {
@@ -169,7 +175,10 @@
 }
 
 .projectsPanel {
+  display: grid;
+  grid-template-rows: auto 1fr;
   padding: 1rem;
+  height: 100%;
 }
 
 .panelHeader {
@@ -233,41 +242,6 @@
   padding-bottom: 0.7rem;
   color: $color-text-soft;
   font-size: 0.72rem;
-}
-
-.resumePanel {
-  display: grid;
-  grid-template-columns: 0.9fr 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.1rem;
-}
-
-.resumePanel p {
-  margin: 0.4rem 0 0;
-  font-weight: 800;
-}
-
-.resumePanel small,
-.resumePanel li {
-  color: $color-text-soft;
-}
-
-.resumePanel ul {
-  display: grid;
-  gap: 0.45rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.resumePanel a {
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  background: rgba(37, 99, 235, 0.18);
-  color: $color-primary-light;
-  font-weight: 800;
-  white-space: nowrap;
 }
 
 .profileCard {
@@ -369,7 +343,6 @@
 
   .projectGrid,
   .skillRows,
-  .resumePanel,
   .actions {
     grid-template-columns: 1fr;
   }

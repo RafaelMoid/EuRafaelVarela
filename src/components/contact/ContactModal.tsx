@@ -93,8 +93,10 @@ export function ContactModal() {
         </button>
 
         <div className={styles.copy}>
-          <span className={styles.icon} aria-hidden="true">...</span>
-          <h2 id="contact-modal-title">{content.title}</h2>
+          <div className={styles.titleRow}>
+            <span className={styles.icon} aria-hidden="true">...</span>
+            <h2 id="contact-modal-title">{content.title}</h2>
+          </div>
           <div className={styles.shortLine} aria-hidden="true" />
           <p>{content.description}</p>
           <strong className={styles.available}>{content.available}</strong>

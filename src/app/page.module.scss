@@ -3,6 +3,7 @@
 
 .section {
   padding: 2rem 0;
+  scroll-margin-top: 6rem;
 }
 
 .aboutPanel,
@@ -20,16 +21,27 @@
   gap: 1.5rem;
 }
 
-.panelIntro,
 .diffIntro {
   display: grid;
   align-content: start;
   gap: 1rem;
 }
 
+.panelIntro {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
 .panelIcon {
   @include icon-tile;
+  width: 2.65rem;
+  height: 2.65rem;
+  border-radius: 12px;
   font-weight: 900;
+  flex: 0 0 auto;
 }
 
 .panelIntro h2,
@@ -41,6 +53,13 @@
   margin: 0;
   font-size: clamp(1.8rem, 3vw, 3rem);
   line-height: 1.05;
+  text-align: left;
+}
+
+.panelIntro .gradientLead,
+.panelIntro p,
+.panelIntro .aboutTags {
+  grid-column: 1 / -1;
 }
 
 .gradientLead,
@@ -65,8 +84,21 @@
 .aboutTags,
 .diffChips {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.7rem;
+}
+
+.aboutTags {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.diffChips {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.diffChips span {
+  display: grid;
+  place-items: center;
+  text-align: center;
 }
 
 .aboutTags span,
@@ -129,9 +161,13 @@
 .sectionHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   margin-bottom: 1.2rem;
+}
+
+.sectionHeader {
+  justify-content: space-between;
 }
 
 .sectionHeader a {
@@ -279,13 +315,64 @@
 
 .resumeProfile a {
   display: inline-flex;
+  align-items: center;
   justify-content: center;
   margin-top: 0.5rem;
-  padding: 1rem;
+  padding: 1rem clamp(0.7rem, 1.6vw, 1rem);
   border-radius: 10px;
   background: linear-gradient(100deg, #1d9bf0, #4f46e5 48%, #a855f7);
   color: $color-white;
+  font-size: clamp(0.72rem, 1.1vw, 0.95rem);
   font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.resumeContactActions {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.resumeActionCard,
+.resumePrimaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.65rem;
+  padding: 0.62rem 0.75rem;
+  border-radius: 10px;
+  font: inherit;
+  font-size: clamp(0.72rem, 0.9vw, 0.84rem);
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform $transition, border-color $transition, box-shadow $transition;
+}
+
+.resumeActionCard {
+  border: 1px solid $color-border;
+  background: rgba(18, 31, 62, 0.62);
+  color: $color-text;
+}
+
+.resumePrimaryAction {
+  border: 1px solid transparent;
+  background: linear-gradient(100deg, #1d9bf0, #4f46e5 48%, #a855f7);
+  color: $color-white;
+}
+
+.resumeActionCard:hover,
+.resumeActionCard:focus-visible,
+.resumePrimaryAction:hover,
+.resumePrimaryAction:focus-visible {
+  transform: translateY(-2px);
+  border-color: $color-primary-light;
+  box-shadow: 0 14px 34px rgba(59, 130, 246, 0.18);
 }
 
 .timeline h3,
@@ -322,7 +409,24 @@
   display: grid;
   grid-template-columns: minmax(280px, 0.8fr) 1fr;
   gap: 1.25rem;
+  align-items: start;
+}
+
+.contactSection > div:first-child {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.contactSection > div:first-child p {
+  grid-column: 1 / -1;
+}
+
+.contactSection > article {
+  align-self: start;
+  margin-top: calc(clamp(2.65rem, 3.15vw, 3.15rem) + 1rem);
 }
 
 @media (max-width: 1100px) {
@@ -331,6 +435,10 @@
   .resumePanel,
   .contactSection {
     grid-template-columns: 1fr;
+  }
+
+  .contactSection > article {
+    margin-top: 0;
   }
 
   .projectGrid {
@@ -357,5 +465,10 @@
   .sectionHeader {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .panelHeading {
+    align-items: center;
+    flex-direction: row;
   }
 }

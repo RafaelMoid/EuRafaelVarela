@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ContactTrigger } from '@/components/contact/ContactTrigger';
 import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { useLanguage } from '@/components/language/LanguageProvider';
@@ -11,15 +11,27 @@ import styles from './Header.module.scss';
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hash, setHash] = useState('');
   const { translate } = useLanguage();
 
   const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    const syncHash = () => setHash(window.location.hash);
+
+    syncHash();
+    window.addEventListener('hashchange', syncHash);
+
+    return () => {
+      window.removeEventListener('hashchange', syncHash);
+    };
+  }, []);
 
   const navItems = [
     { href: '/', label: translate.nav.home },
     { href: '/projetos', label: translate.nav.projects },
     { href: '/experiencia', label: translate.nav.experience },
-    { href: '/sobre', label: translate.nav.about },
+    { href: '/#about-section', label: translate.nav.about },
     { href: '/curriculo', label: translate.nav.resume },
     { href: 'contact', label: translate.nav.contact },
   ];
@@ -46,7 +58,8 @@ export function Header() {
 
         <nav id="site-navigation" className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Navegacao principal">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isHashLink = item.href.includes('#');
+            const isActive = isHashLink ? false : pathname === item.href && hash === '';
 
             if (item.href === 'contact') {
               return (

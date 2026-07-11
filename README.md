@@ -89,6 +89,15 @@ npm run start
 - Card visual de código do hero foi removido para evitar distorções e simplificar a composição.
 - Etiqueta superior do hero foi removida para reduzir ruído visual no layout.
 - Strip de qualidades do hero passou a usar colunas automáticas para caber corretamente em larguras intermediárias.
+- Ícones das seções Sobre mim, Habilidades e tecnologias e Vamos conversar foram alinhados horizontalmente antes dos títulos.
+- Títulos dessas seções foram padronizados com alinhamento à esquerda sem aumentar a altura vertical dos blocos.
+- Botão "Ver currículo completo" recebeu fonte responsiva e `white-space: nowrap` para evitar quebra de linha.
+- Timeline de experiência da home foi atualizada com o conteúdo extraído do currículo anexado em inglês.
+- Cada item de experiência passou a exibir cargo, empresa, período e descrição em PT/EN/ES.
+- Página `/sobre` foi removida e o item "Sobre" do menu passou a levar para a seção "Sobre mim" da home.
+- Sitemap foi atualizado para remover a rota `/sobre`.
+- Secao de experiencia profissional recebeu os quatro botoes do modal de contato: e-mail, LinkedIn, GitHub e copia principal de e-mail com feedback visual.
+- Botoes de contato da secao de experiencia foram compactados para exibir apenas os nomes das acoes, sem icones ou links visiveis.
 
 ## Estrutura de cores e tokens
 

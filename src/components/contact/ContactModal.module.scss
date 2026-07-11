@@ -74,10 +74,18 @@
   font-weight: 900;
 }
 
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
 .copy h2 {
   margin: 0;
   font-size: clamp(3.2rem, 7vw, 5.7rem);
   line-height: 0.94;
+  min-width: 0;
 }
 
 .copy h2::first-letter {

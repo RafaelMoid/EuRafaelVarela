@@ -72,20 +72,6 @@ export function HeroSection() {
             ))}
           </div>
         </div>
-
-        <div className={styles.resumePanel}>
-          <div>
-            <h2>{content.resumeTitle}</h2>
-            <p>Rafael Varela</p>
-            <small>{content.resumeRole}</small>
-          </div>
-          <ul>
-            {content.resumeBullets.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <Link href="/curriculo">{content.resumeCta}</Link>
-        </div>
       </div>
 
       <aside className={styles.right} aria-label="Diferenciais tecnicos">

@@ -113,19 +113,34 @@ export const baseTranslations = {
       sideTitle: 'Habilidades',
       timeline: [
         {
-          role: 'Senior Web Developer',
-          period: '2022 - Presente',
-          description: 'Desenvolvimento de plataformas, sites institucionais, dashboards e soluções web com foco em entrega e qualidade.',
+          role: 'Technology Manager',
+          company: 'SEDUH-PE',
+          period: 'Set/2025 - Presente',
+          description: 'Coordenação da equipe de tecnologia, gestão de demandas de TI e suporte para governança de dados e inovação.',
         },
         {
-          role: 'Web Developer',
-          period: '2020 - 2022',
-          description: 'Construção de websites responsivos, temas WordPress, interfaces e componentes reutilizáveis.',
+          role: 'Data Analyst',
+          company: 'SEDUH-PE',
+          period: 'Abr/2025 - Out/2025',
+          description: 'Desenvolvimento de dashboards, relatórios e aplicações web; coleta e estruturação de dados para gestão pública.',
         },
         {
-          role: 'Junior Developer',
-          period: '2018 - 2020',
-          description: 'Manutenção de sites, páginas de campanha, ajustes de front-end e suporte técnico.',
+          role: 'Frontend Developer',
+          company: 'The Brooklyn Brothers',
+          period: 'Jul/2023 - Jul/2024',
+          description: 'Criação e manutenção de websites e aplicações para Unillever.',
+        },
+        {
+          role: 'Frontend Developer',
+          company: 'Jazzz digital agency',
+          period: 'Abr/2025 - Out/2025',
+          description: 'Desenvolvimento e manutenção de websites e aplicações, gestão de equipe e gestão e manutenção de hospedagem.',
+        },
+        {
+          role: 'Frontend Developer',
+          company: 'TDS Company',
+          period: 'Jul/2021 - Ago/2022',
+          description: 'Desenvolvimento de sites WordPress e aplicações web com React.',
         },
       ],
       items: [
@@ -280,9 +295,11 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
         experienceTitle: 'Experience',
         sideTitle: 'Skills',
         timeline: [
-          { role: 'Senior Web Developer', period: '2022 - Present', description: 'Development of platforms, institutional websites, dashboards and web solutions focused on delivery and quality.' },
-          { role: 'Web Developer', period: '2020 - 2022', description: 'Responsive websites, WordPress themes, interfaces and reusable components.' },
-          { role: 'Junior Developer', period: '2018 - 2020', description: 'Website maintenance, campaign pages, front-end adjustments and technical support.' },
+          { role: 'Technology Manager', company: 'SEDUH-PE', period: 'Sep/2025 - Present', description: 'Coordination of the technology team, management of IT demands and support for data governance and innovation.' },
+          { role: 'Data Analyst', company: 'SEDUH-PE', period: 'Apr/2025 - Oct/2025', description: 'Development of dashboards, reports and web applications; data collection and structuring for public management.' },
+          { role: 'Frontend Developer', company: 'The Brooklyn Brothers', period: 'Jul/2023 - Jul/2024', description: 'Created and maintained websites and apps for Unillever.' },
+          { role: 'Frontend Developer', company: 'Jazzz digital agency', period: 'Apr/2025 - Oct/2025', description: 'Development and maintenance of websites and applications, team management and hosting management and maintenance.' },
+          { role: 'Frontend Developer', company: 'TDS Company', period: 'Jul/2021 - Aug/2022', description: 'Development of WordPress sites and web applications with React.' },
         ],
         items: [
           { title: 'WordPress/PHP', text: 'Custom themes, CMS, WooCommerce, ACF, performance and technical SEO.' },
@@ -403,9 +420,11 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
         experienceTitle: 'Experiencia',
         sideTitle: 'Skills',
         timeline: [
-          { role: 'Senior Web Developer', period: '2022 - Presente', description: 'Desarrollo de plataformas, sitios institucionales, dashboards y soluciones web con foco en entrega y calidad.' },
-          { role: 'Web Developer', period: '2020 - 2022', description: 'Construcción de sitios responsivos, temas WordPress, interfaces y componentes reutilizables.' },
-          { role: 'Junior Developer', period: '2018 - 2020', description: 'Mantenimiento de sitios, páginas de campaña, ajustes front-end y soporte técnico.' },
+          { role: 'Technology Manager', company: 'SEDUH-PE', period: 'Sep/2025 - Presente', description: 'Coordinación del equipo de tecnología, gestión de demandas de TI y soporte para gobernanza de datos e innovación.' },
+          { role: 'Data Analyst', company: 'SEDUH-PE', period: 'Abr/2025 - Oct/2025', description: 'Desarrollo de dashboards, informes y aplicaciones web; recolección y estructuración de datos para gestión pública.' },
+          { role: 'Frontend Developer', company: 'The Brooklyn Brothers', period: 'Jul/2023 - Jul/2024', description: 'Creación y mantenimiento de websites y aplicaciones para Unillever.' },
+          { role: 'Frontend Developer', company: 'Jazzz digital agency', period: 'Abr/2025 - Oct/2025', description: 'Desarrollo y mantenimiento de websites y aplicaciones, gestión de equipo y gestión y mantenimiento de hosting.' },
+          { role: 'Frontend Developer', company: 'TDS Company', period: 'Jul/2021 - Ago/2022', description: 'Desarrollo de sitios WordPress y aplicaciones web con React.' },
         ],
         items: [
           { title: 'WordPress/PHP', text: 'Temas personalizados, CMS, WooCommerce, ACF, performance y SEO técnico.' },
