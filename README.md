@@ -180,3 +180,14 @@ $color-hover: rgba(109, 40, 217, 0.3);
 ## Observação
 
 Este projeto usa descrições profissionais de forma clara e contextualizada. Nenhum material interno, URL restrita ou conteúdo confidencial é exibido publicamente.
+
+## Padrao de traducao
+
+O padrao oficial de traducao do projeto e manter todo texto visivel em arquivos de dados/dicionario e renderizar o conteudo conforme o idioma selecionado no dropdown do header.
+
+- O dropdown altera o idioma global no `LanguageProvider`.
+- Paginas e componentes consomem `translate` e `content` do provider.
+- Textos da Home, Experiencia, Curriculo e Modal de Contato ficam centralizados em `src/data/translations.ts` e nos arquivos de dados traduzidos em `src/data`.
+- Nao usar scripts externos, widgets de traducao ou mutacao direta do DOM para traduzir textos.
+- Ao criar qualquer novo texto visivel, adicionar a versao correspondente nos idiomas suportados antes de renderizar no JSX.
+- Idiomas suportados atualmente: Portugues, Ingles e Espanhol.
