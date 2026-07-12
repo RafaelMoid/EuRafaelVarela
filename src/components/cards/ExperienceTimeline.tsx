@@ -1,7 +1,10 @@
-import { experiences } from '@/data/experiences';
+import { useLanguage } from '@/components/language/LanguageProvider';
 import styles from './ExperienceTimeline.module.scss';
 
 export function ExperienceTimeline() {
+  const { content } = useLanguage();
+  const { experiences } = content;
+
   return (
     <ol className={styles.timeline}>
       {experiences.map((item) => (

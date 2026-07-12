@@ -1,4 +1,4 @@
-export type LanguageCode = 'pt-BR' | 'en-US' | 'es-ES';
+export type LanguageCode = string;
 
 export const languageOptions = [
   { code: 'pt-BR', label: 'Português' },
@@ -107,6 +107,7 @@ export const baseTranslations = {
     },
     resume: {
       title: 'Rafael Varela',
+      profileAlt: 'Foto profissional de Rafael Varela',
       role: 'Desenvolvedor web',
       cta: 'Ver currículo completo',
       experienceTitle: 'Experiência',
@@ -196,6 +197,55 @@ export const baseTranslations = {
     downloadText: 'Baixar currículo',
     downloadNote: 'Currículo em PDF disponível para download.',
   },
+  resumeCard: {
+    openFocus: 'Abrir foco',
+  },
+  resumeFocus: {
+    eyebrow: 'Currículo por foco',
+    stackSummary: 'Resumo das stacks',
+    pageOverview: 'Overview desta página',
+    relatedProjects: 'Projetos que usam esta stack',
+    profileSummary: 'Resumo do perfil',
+    idealRoles: 'Funções e posições ideais',
+    highlightedExperience: 'Experiência destacada',
+    strengths: 'Pontos fortes',
+    relevantStack: 'Stack relevante',
+  },
+  projectsPage: {
+    eyebrow: 'Projetos',
+    title: 'Demonstrações técnicas e portfólio profissional',
+    description:
+      'A coleção abaixo reúne projetos de portfólio, aplicações web, conceitos WordPress e ideias em evolução para mostrar capacidade técnica e visão de produto.',
+  },
+  projectDetail: {
+    eyebrow: 'Projeto',
+    notFoundTitle: 'Projeto não encontrado',
+    notFoundDescription: 'O projeto solicitado não está disponível.',
+    plannedNotice:
+      'Este projeto está em desenvolvimento como parte de um portfólio técnico voltado à demonstração de habilidades em aplicações reais.',
+    status: 'Status',
+    type: 'Tipo',
+    stack: 'Stack',
+    problem: 'Problema resolvido',
+    features: 'Funcionalidades previstas ou implementadas',
+    decisions: 'Decisões técnicas',
+    futureImprovements: 'Melhorias futuras',
+    deploy: 'Ver deploy',
+    github: 'Ver GitHub',
+    contactTitle: 'Interessado em conversar?',
+    contactText: 'Posso discutir esse projeto, a arquitetura e como ele se conecta ao meu perfil técnico e comercial.',
+    contactCta: 'Falar comigo',
+    imageAlt: 'Imagem do projeto',
+  },
+  accessibilityLabels: {
+    technicalDifferentiators: 'Diferenciais técnicos',
+    floatingContact: 'Abrir informações de contato',
+    skipToContent: 'Ir para o conteúdo principal',
+    brandHome: 'Início do portfólio',
+    mainNavigation: 'Navegação principal',
+    contactActions: 'Ações de contato',
+    projectPreview: 'Preview do projeto',
+  },
   contact: {
     eyebrow: 'Contato',
     title: 'Converse comigo',
@@ -228,6 +278,7 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
     heroDashboard: {
       ...baseTranslations.heroDashboard,
       kicker: 'Full-Stack Developer • Tech Enthusiast • Problem Solver',
+      titleHighlight: 'Portfolio Hub',
       description:
         'I build fast, accessible and SEO-ready web experiences focused on WordPress, front-end, web systems and technical management.',
       primaryCta: "Let's work together",
@@ -235,6 +286,7 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       projectsTitle: 'Projects',
       projectsCta: 'View All',
       resumeTitle: 'Resume',
+      resumeRole: 'Full-Stack Developer',
       resumeCta: 'View Resume',
       contactTitle: "Let's build something great",
       contactDescription: 'Have a project in mind or want to collaborate? Let’s talk.',
@@ -257,8 +309,12 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       ...baseTranslations.home,
       about: {
         ...baseTranslations.home.about,
+        title: 'About me',
+        lead: 'I build fast, accessible and SEO-ready web experiences that deliver results.',
         description:
           'I’m Rafael Varela, a web developer with 4+ years of experience building modern websites, systems and interfaces. I focus on WordPress/PHP, front-end, performance, accessibility and technical organization.',
+        tags: ['WordPress & PHP', 'Front-end development', 'Web systems', 'SEO and performance', 'Accessibility', 'Technical management'],
+        footer: ['Clean code', 'Technical vision', 'Delivery focus'],
         stats: [
           { value: '4+', label: 'Years Experience' },
           { value: '30+', label: 'Projects Completed' },
@@ -281,6 +337,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       differentiators: {
         ...baseTranslations.home.differentiators,
         eyebrow: 'Technical differentiators',
+        titleStart: 'Built different.',
+        titleHighlight: 'Built to perform.',
         description: 'Performance, visibility and accessibility are not afterthoughts. They are built into the architecture from the start.',
         chips: ['Optimized performance', 'Search ready', 'Accessible by design', 'Clean standards'],
         cards: [
@@ -291,6 +349,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       },
       resume: {
         ...baseTranslations.home.resume,
+        profileAlt: 'Professional photo of Rafael Varela',
+        role: 'Web developer',
         cta: 'View Full Resume',
         experienceTitle: 'Experience',
         sideTitle: 'Skills',
@@ -320,9 +380,11 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
     },
     contactModal: {
       ...baseTranslations.contactModal,
+      title: 'Contact',
       description:
         'I’m available for web development, WordPress/PHP, front-end, web/full-stack and technical management opportunities. Let’s build something exceptional together.',
       available: 'Available for work',
+      email: 'Email',
       copyMain: 'Copy my email',
       copiedMain: 'Email copied',
       privacy: 'Your information is safe with me. I respect your privacy.',
@@ -332,6 +394,67 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
         { title: 'Professional', text: 'Reliable delivery' },
         { title: 'Open to Ideas', text: 'Let’s discuss' },
       ],
+    },
+    resumeCard: {
+      openFocus: 'Open focus',
+    },
+    experience: {
+      eyebrow: 'Experience',
+      title: 'My professional path',
+      description: 'Timeline with projects and roles across WordPress, front-end, internal systems and web development.',
+    },
+    resume: {
+      eyebrow: 'Resume',
+      title: 'Professional summary',
+      description: 'Explore my main areas of work, skills and delivery profiles across WordPress, front-end and technical management.',
+      downloadText: 'Download resume',
+      downloadNote: 'Resume available as a PDF download.',
+    },
+    resumeFocus: {
+      eyebrow: 'Resume by focus',
+      stackSummary: 'Stack summary',
+      pageOverview: 'Page overview',
+      relatedProjects: 'Projects using this stack',
+      profileSummary: 'Profile summary',
+      idealRoles: 'Ideal roles and positions',
+      highlightedExperience: 'Highlighted experience',
+      strengths: 'Strengths',
+      relevantStack: 'Relevant stack',
+    },
+    projectsPage: {
+      eyebrow: 'Projects',
+      title: 'Technical demos and professional portfolio',
+      description:
+        'The collection below brings together portfolio projects, web applications, WordPress concepts and evolving ideas to show technical capability and product vision.',
+    },
+    projectDetail: {
+      eyebrow: 'Project',
+      notFoundTitle: 'Project not found',
+      notFoundDescription: 'The requested project is not available.',
+      plannedNotice:
+        'This project is in development as part of a technical portfolio focused on demonstrating skills in realistic applications.',
+      status: 'Status',
+      type: 'Type',
+      stack: 'Stack',
+      problem: 'Problem solved',
+      features: 'Planned or implemented features',
+      decisions: 'Technical decisions',
+      futureImprovements: 'Future improvements',
+      deploy: 'View deploy',
+      github: 'View GitHub',
+      contactTitle: 'Interested in talking?',
+      contactText: 'I can discuss this project, its architecture and how it connects to my technical and commercial profile.',
+      contactCta: 'Contact me',
+      imageAlt: 'Project image',
+    },
+    accessibilityLabels: {
+      technicalDifferentiators: 'Technical differentiators',
+      floatingContact: 'Open contact information',
+      skipToContent: 'Skip to main content',
+      brandHome: 'Portfolio home',
+      mainNavigation: 'Main navigation',
+      contactActions: 'Contact actions',
+      projectPreview: 'Project preview',
     },
     footer: {
       copyright: '© {year} {name}. All rights reserved.',
@@ -353,6 +476,7 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
     heroDashboard: {
       ...baseTranslations.heroDashboard,
       kicker: 'Full-Stack Developer • Entusiasta tech • Solucionador de problemas',
+      titleHighlight: 'Hub de Portafolio',
       description:
         'Construyo experiencias web rápidas, accesibles y preparadas para SEO, con foco en WordPress, front-end, sistemas web y gestión técnica.',
       primaryCta: 'Trabajemos juntos',
@@ -360,6 +484,7 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       projectsTitle: 'Proyectos',
       projectsCta: 'Ver todos',
       resumeTitle: 'Currículum',
+      resumeRole: 'Desarrollador Full-Stack',
       resumeCta: 'Ver currículum',
       contactTitle: 'Construyamos algo grande',
       contactDescription: '¿Tienes un proyecto en mente o quieres colaborar? Hablemos.',
@@ -382,8 +507,12 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       ...baseTranslations.home,
       about: {
         ...baseTranslations.home.about,
+        title: 'Sobre mi',
+        lead: 'Construyo experiencias web rapidas, accesibles y preparadas para SEO que generan resultados.',
         description:
           'Soy Rafael Varela, desarrollador web con más de 4 años de experiencia creando sitios, sistemas e interfaces modernas. Me enfoco en WordPress/PHP, front-end, performance, accesibilidad y organización técnica.',
+        tags: ['WordPress & PHP', 'Desarrollo front-end', 'Sistemas web', 'SEO y performance', 'Accesibilidad', 'Gestion tecnica'],
+        footer: ['Codigo limpio', 'Vision tecnica', 'Foco en entrega'],
         stats: [
           { value: '4+', label: 'Años de experiencia' },
           { value: '30+', label: 'Proyectos completados' },
@@ -406,6 +535,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       differentiators: {
         ...baseTranslations.home.differentiators,
         eyebrow: 'Diferenciales técnicos',
+        titleStart: 'Construido diferente.',
+        titleHighlight: 'Construido para rendir.',
         description: 'Performance, visibilidad y accesibilidad no son detalles finales. Forman parte de la arquitectura desde el inicio.',
         chips: ['Performance optimizada', 'Listo para búsqueda', 'Accesible por diseño', 'Estándares limpios'],
         cards: [
@@ -416,6 +547,8 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       },
       resume: {
         ...baseTranslations.home.resume,
+        profileAlt: 'Foto profesional de Rafael Varela',
+        role: 'Desarrollador web',
         cta: 'Ver currículum completo',
         experienceTitle: 'Experiencia',
         sideTitle: 'Skills',
@@ -445,9 +578,11 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
     },
     contactModal: {
       ...baseTranslations.contactModal,
+      title: 'Contacto',
       description:
         'Estoy disponible para oportunidades en desarrollo web, WordPress/PHP, front-end, web/full-stack y gestión técnica. Construyamos algo excepcional juntos.',
       available: 'Disponible para trabajar',
+      email: 'Email',
       copyMain: 'Copiar mi e-mail',
       copiedMain: 'E-mail copiado',
       privacy: 'Tu información está segura conmigo. Respeto tu privacidad.',
@@ -457,6 +592,67 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
         { title: 'Profesional', text: 'Entrega clara' },
         { title: 'Abierto a ideas', text: 'Hablemos' },
       ],
+    },
+    resumeCard: {
+      openFocus: 'Abrir foco',
+    },
+    experience: {
+      eyebrow: 'Experiencia',
+      title: 'Mi recorrido profesional',
+      description: 'Linea de tiempo con proyectos y trabajos en WordPress, front-end, sistemas internos y desarrollo web.',
+    },
+    resume: {
+      eyebrow: 'Curriculum',
+      title: 'Resumen profesional',
+      description: 'Conoce mis focos de actuacion, competencias y perfiles principales de entrega en WordPress, front-end y gestion tecnica.',
+      downloadText: 'Descargar curriculum',
+      downloadNote: 'Curriculum en PDF disponible para descarga.',
+    },
+    resumeFocus: {
+      eyebrow: 'Currículum por foco',
+      stackSummary: 'Resumen de stacks',
+      pageOverview: 'Overview de esta página',
+      relatedProjects: 'Proyectos que usan esta stack',
+      profileSummary: 'Resumen del perfil',
+      idealRoles: 'Funciones y posiciones ideales',
+      highlightedExperience: 'Experiencia destacada',
+      strengths: 'Puntos fuertes',
+      relevantStack: 'Stack relevante',
+    },
+    projectsPage: {
+      eyebrow: 'Proyectos',
+      title: 'Demostraciones técnicas y portafolio profesional',
+      description:
+        'La colección abajo reúne proyectos de portafolio, aplicaciones web, conceptos WordPress e ideas en evolución para mostrar capacidad técnica y visión de producto.',
+    },
+    projectDetail: {
+      eyebrow: 'Proyecto',
+      notFoundTitle: 'Proyecto no encontrado',
+      notFoundDescription: 'El proyecto solicitado no está disponible.',
+      plannedNotice:
+        'Este proyecto está en desarrollo como parte de un portafolio técnico orientado a demostrar habilidades en aplicaciones realistas.',
+      status: 'Estado',
+      type: 'Tipo',
+      stack: 'Stack',
+      problem: 'Problema resuelto',
+      features: 'Funcionalidades previstas o implementadas',
+      decisions: 'Decisiones técnicas',
+      futureImprovements: 'Mejoras futuras',
+      deploy: 'Ver deploy',
+      github: 'Ver GitHub',
+      contactTitle: '¿Interesado en conversar?',
+      contactText: 'Puedo conversar sobre este proyecto, la arquitectura y cómo se conecta con mi perfil técnico y comercial.',
+      contactCta: 'Hablar conmigo',
+      imageAlt: 'Imagen del proyecto',
+    },
+    accessibilityLabels: {
+      technicalDifferentiators: 'Diferenciales técnicos',
+      floatingContact: 'Abrir información de contacto',
+      skipToContent: 'Ir al contenido principal',
+      brandHome: 'Inicio del portafolio',
+      mainNavigation: 'Navegación principal',
+      contactActions: 'Acciones de contacto',
+      projectPreview: 'Vista previa del proyecto',
     },
     footer: {
       copyright: '© {year} {name}. Todos los derechos reservados.',

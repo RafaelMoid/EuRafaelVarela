@@ -99,6 +99,25 @@ npm run start
 - Secao de experiencia profissional recebeu os quatro botoes do modal de contato: e-mail, LinkedIn, GitHub e copia principal de e-mail com feedback visual.
 - Botoes de contato da secao de experiencia foram compactados para exibir apenas os nomes das acoes, sem icones ou links visiveis.
 - Numeros da secao Sobre mim passaram a animar em contagem progressiva ate o valor final quando entram na tela.
+- Seletor de idioma foi estabilizado para idiomas com dicionario completo no projeto: portugues, ingles e espanhol.
+- Traducoes passaram a ser resolvidas por estado React via `LanguageProvider`, sem mutacao direta do DOM por scripts externos.
+- Textos acessiveis do header, navegacao, contato e previews de projeto foram conectados ao dicionario de idioma ativo.
+- Home, Experiencia, Curriculo e Modal de Contato passaram a ter as chaves de texto completadas em `src/data/translations.ts` para troca direta pelo dropdown do header.
+- Sistema de idiomas foi refatorado para aplicar traducoes em dados de projetos, experiencias, skills e focos de curriculo ao navegar entre rotas.
+- Provider de idioma passou a derivar o objeto de traducao diretamente do idioma ativo e validar a preferencia salva no navegador.
+- Seletor de idioma foi expandido para multiplos idiomas e passou a usar traducao automatica gratuita via `@vitalets/google-translate-api` para o pacote completo de conteudo do site.
+- Conteudo traduzido e cacheado no navegador, preservando slugs, URLs e caminhos de imagem para evitar quebra de rotas e assets.
+- Fluxo de traducao automatica foi reforcado com fallback localizado, traducao sequencial para reduzir falhas e labels acessiveis traduziveis.
+- Tradução universal do DOM foi adicionada para cobrir textos renderizados fora dos dados estruturados, incluindo títulos, cards, botões, spans, modal, header e conteúdo carregado após navegação.
+- O tradutor do DOM usa um único endpoint gratuito de tradução, observa mudanças com `MutationObserver`, ignora URLs, e-mails, números e blocos técnicos, e cacheia textos por idioma no navegador.
+- Sistema de tradução foi refeito para usar uma fonte única: componentes renderizam o conteúdo base e a camada universal traduz o DOM completo conforme o idioma escolhido no header.
+- `Header_languageWrapper` e o seletor de idioma foram integrados ao fluxo novo: label e atributos participam da tradução, enquanto `select` e `option` ficam preservados para não quebrar a troca de idioma.
+- Tradução estruturada por `LanguageProvider` foi desativada para evitar conflitos entre dados traduzidos e mutações do DOM.
+- Dropdown `LanguageSelector_select` passou a controlar explicitamente o estado global de idioma e o status de tradução, garantindo que a troca feita no header dispare o tradutor universal.
+- Cache de tradução do DOM foi versionado novamente para ignorar resultados antigos que haviam armazenado texto original quando a API falhava.
+- Endpoint de tradução ganhou modo estrito para chamadas do DOM, evitando que falhas retornem texto original como se a tradução tivesse sido concluída.
+- Fluxo do dropdown do header foi migrado para tradução client-side do DOM via Google Website Translator, evitando chamadas repetidas para `/api/translate`.
+- O widget nativo de tradução fica oculto e é comandado pelo `LanguageSelector_select`, preservando o layout do header e traduzindo o conteúdo renderizado da página.
 
 ## Estrutura de cores e tokens
 

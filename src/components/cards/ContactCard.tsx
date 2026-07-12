@@ -64,7 +64,7 @@ export function ContactCard({ framed = false, showContent = false, titleId }: { 
           <p className={styles.description}>{translate.home.contact.description}</p>
         </div>
       ) : null}
-      <div className={styles.actions} aria-label="Acoes de contato">
+      <div className={styles.actions} aria-label={translate.accessibilityLabels.contactActions}>
         <button className={`${styles.actionButton} ${styles.primary}`} type="button" onClick={handleEmailClick}>
           {copied ? translate.contactActions.copiedEmail : translate.contactActions.copyEmail}
         </button>

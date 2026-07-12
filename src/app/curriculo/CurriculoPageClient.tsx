@@ -4,11 +4,11 @@ import { Container } from '@/components/ui/Container';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ResumeCard } from '@/components/cards/ResumeCard';
 import { SkillBadge } from '@/components/ui/SkillBadge';
-import { skillGroups } from '@/data/skills';
 import { useLanguage } from '@/components/language/LanguageProvider';
 
 export function CurriculoPageClient() {
-  const { translate } = useLanguage();
+  const { content, translate } = useLanguage();
+  const { resumeFocuses, skillGroups } = content;
 
   return (
     <section aria-labelledby="resume-title" style={{ padding: '2rem 0 4rem' }}>
@@ -22,9 +22,9 @@ export function CurriculoPageClient() {
           <p style={{ marginTop: '0.75rem', color: '#94a3b8' }}>{translate.resume.downloadNote}</p>
         </div>
         <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', marginBottom: '1.2rem' }}>
-          <ResumeCard title="WordPress/PHP" description="Temas customizados, CMS, plugins, SEO técnico e performance." href="/curriculo/wordpress-php" />
-          <ResumeCard title="React/Front-end" description="Interfaces com boas práticas, acessibilidade e componente reutilizável." href="/curriculo/react-front-end" />
-          <ResumeCard title="Web/Fullstack/Gestão técnica" description="Organização, integração, processos e visão de produto e operação." href="/curriculo/web-fullstack-gestao-tecnica" />
+          {resumeFocuses.map((focus) => (
+            <ResumeCard key={focus.slug} title={focus.title} description={focus.intro} href={`/curriculo/${focus.slug}`} />
+          ))}
         </div>
         <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}>
           {skillGroups.map((group) => (

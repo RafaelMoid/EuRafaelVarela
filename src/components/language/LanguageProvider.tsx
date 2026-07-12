@@ -1,26 +1,51 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { getProjectsByLanguage, projects, type Project } from '@/data/projects';
+import { experiences, getExperiencesByLanguage, type Experience } from '@/data/experiences';
+import { getResumeFocusesByLanguage, resumeFocuses, type ResumeFocus } from '@/data/resume';
+import { getSkillGroupsByLanguage, skillGroups, type SkillGroup } from '@/data/skills';
 import { baseTranslations, defaultLanguage, languageOptions, translations, type LanguageCode } from '@/data/translations';
 
 type TranslationRoot = typeof baseTranslations;
+type LocalizedContent = {
+  translate: TranslationRoot;
+  projects: Project[];
+  experiences: Experience[];
+  resumeFocuses: ResumeFocus[];
+  skillGroups: SkillGroup[];
+};
 
 type LanguageContextValue = {
   language: LanguageCode;
   setLanguage: (value: LanguageCode) => void;
   translate: TranslationRoot;
-  options: typeof languageOptions;
+  content: LocalizedContent;
+  translating: boolean;
+  setTranslating: (value: boolean) => void;
+  options: ReadonlyArray<{ code: LanguageCode; label: string }>;
 };
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
+const baseContent: LocalizedContent = {
+  translate: baseTranslations,
+  projects,
+  experiences,
+  resumeFocuses,
+  skillGroups,
+};
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<LanguageCode>(defaultLanguage);
-  const [translate, setTranslate] = useState<TranslationRoot>(baseTranslations);
+  const [translating, setTranslating] = useState(false);
+
+  const isValidLanguage = (value: string | null): value is LanguageCode =>
+    Boolean(value && languageOptions.some((option) => option.code === value));
 
   useEffect(() => {
-    const storedLanguage = window.localStorage.getItem('selectedLanguage') as LanguageCode | null;
-    if (storedLanguage) {
+    const storedLanguage = window.localStorage.getItem('selectedLanguage');
+
+    if (isValidLanguage(storedLanguage)) {
       setLanguage(storedLanguage);
       return;
     }
@@ -41,18 +66,30 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = language;
   }, [language]);
 
-  useEffect(() => {
-    setTranslate(translations[language] ?? baseTranslations);
-  }, [language]);
-
   const contextValue = useMemo(
-    () => ({
-      language,
-      setLanguage,
-      translate,
-      options: languageOptions,
-    }),
-    [language, translate]
+    () => {
+      const content =
+        language === defaultLanguage
+          ? baseContent
+          : {
+              translate: translations[language] ?? baseTranslations,
+              projects: getProjectsByLanguage(language),
+              experiences: getExperiencesByLanguage(language),
+              resumeFocuses: getResumeFocusesByLanguage(language),
+              skillGroups: getSkillGroupsByLanguage(language),
+            };
+
+      return {
+        language,
+        setLanguage,
+        translate: content.translate,
+        content,
+        translating,
+        setTranslating,
+        options: languageOptions,
+      };
+    },
+    [language, translating]
   );
 
   return <LanguageContext.Provider value={contextValue}>{children}</LanguageContext.Provider>;

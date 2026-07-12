@@ -39,7 +39,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.brand} onClick={closeMenu} aria-label="Inicio do portfolio">
+        <Link href="/" className={styles.brand} onClick={closeMenu} aria-label={translate.accessibilityLabels.brandHome}>
           RV
         </Link>
 
@@ -56,7 +56,7 @@ export function Header() {
           <span />
         </button>
 
-        <nav id="site-navigation" className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Navegacao principal">
+        <nav id="site-navigation" className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label={translate.accessibilityLabels.mainNavigation}>
           {navItems.map((item) => {
             const isHashLink = item.href.includes('#');
             const isActive = isHashLink ? false : pathname === item.href && hash === '';

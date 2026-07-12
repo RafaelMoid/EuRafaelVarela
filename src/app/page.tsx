@@ -9,8 +9,6 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import { Container } from '@/components/ui/Container';
 import { SkillBadge } from '@/components/ui/SkillBadge';
-import { projects } from '@/data/projects';
-import { skillGroups } from '@/data/skills';
 import { profile } from '@/data/profile';
 import styles from './page.module.scss';
 
@@ -88,9 +86,10 @@ function AnimatedStatValue({ value }: { value: string }) {
 
 export default function HomePage() {
   const [resumeEmailCopied, setResumeEmailCopied] = useState(false);
-  const { translate } = useLanguage();
+  const { content, translate } = useLanguage();
   const home = translate.home;
   const contactModal = translate.contactModal;
+  const { projects, skillGroups } = content;
 
   const fallbackCopyEmail = () => {
     const textarea = document.createElement('textarea');
@@ -154,7 +153,7 @@ export default function HomePage() {
         <Container>
           <div className={styles.resumePanel}>
             <div className={styles.resumeProfile}>
-              <Image src="/assets/profile/rafael-varela.webp" alt="Foto profissional de Rafael Varela" width={280} height={280} />
+              <Image src="/assets/profile/rafael-varela.webp" alt={home.resume.profileAlt} width={280} height={280} />
               <h2 id="resume-title">{home.resume.title}</h2>
               <p>{home.resume.role}</p>
               <div className={styles.resumeContactActions} aria-label={contactModal.title}>
