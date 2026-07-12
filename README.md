@@ -69,6 +69,13 @@ npm run start
 - Textos acessiveis do header, navegacao, contato e previews de projeto foram conectados ao dicionario ativo.
 - Abordagens com Google Website Translator, `MutationObserver` e chamadas repetidas para `/api/translate` foram descartadas por causarem traducao parcial, falhas 500 ou conflitos de reconciliacao com React/Next.
 - Build de producao foi validado com `npm.cmd run build`.
+- Botao de fechar do modal de contato foi ajustado para rotacionar o X no centro, sem deslocamento visual.
+- Favicon `src/app/icon.svg` foi criado com a marca RV em gradiente azul/roxo seguindo o modelo visual do header.
+- Metadados globais foram reforcados com Open Graph e Twitter Card para melhorar previews em WhatsApp, Facebook, LinkedIn e apps similares.
+- Paginas receberam `noindex` e `nofollow` via metadata para evitar indexacao por buscadores.
+- `robots.txt` passou a bloquear crawlers genericos e liberar crawlers sociais comuns para leitura dos cards de compartilhamento.
+- Sitemap foi esvaziado para nao divulgar rotas para indexacao.
+- Imagem dinamica `/opengraph-image` foi criada com `next/og` para gerar preview social 1200x630 com a identidade visual do portfolio.
 
 ### 11/07/2026
 
