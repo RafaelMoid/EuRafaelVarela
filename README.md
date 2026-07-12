@@ -60,7 +60,17 @@ npm run start
 
 ## Registro de mudanças
 
-### 2026-07-11
+### 12/07/2026
+
+- Padrao oficial de traducao definido: todo texto visivel deve ficar em arquivos de dados/dicionario e ser renderizado via React pelo `LanguageProvider`.
+- Dropdown de idioma do header passou a trocar `translate` e `content` do provider, sem scripts externos e sem mutacao direta do DOM.
+- Idiomas suportados foram estabilizados para Portugues, Ingles e Espanhol, mantendo apenas opcoes com conteudo traduzido no projeto.
+- Home, Experiencia, Curriculo e Modal de Contato tiveram chaves de traducao completadas em `src/data/translations.ts` e dados relacionados em `src/data`.
+- Textos acessiveis do header, navegacao, contato e previews de projeto foram conectados ao dicionario ativo.
+- Abordagens com Google Website Translator, `MutationObserver` e chamadas repetidas para `/api/translate` foram descartadas por causarem traducao parcial, falhas 500 ou conflitos de reconciliacao com React/Next.
+- Build de producao foi validado com `npm.cmd run build`.
+
+### 11/07/2026
 
 - Contato passou a abrir em modal, sem redirecionar para uma rota dedicada.
 - Card de contato passou a renderizar apenas os botões de ação, usando o padrão visual dos botões do site e sem fundo extra na home.
