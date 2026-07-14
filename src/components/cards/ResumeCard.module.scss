@@ -15,6 +15,12 @@
   color: $color-text-muted;
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
 .link {
   font-size: $button-font-size;
   color: $color-primary-light;

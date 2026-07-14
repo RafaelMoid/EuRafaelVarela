@@ -194,6 +194,30 @@
   background: linear-gradient(100deg, rgba(4, 12, 28, 0.86), rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.09));
 }
 
+.skillToggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+}
+
+.skillToggle span {
+  display: none;
+}
+
+.skillRowContent {
+  display: grid;
+  gap: 0.75rem;
+  align-items: center;
+}
+
 .skillRow h3,
 .skillRow p {
   margin: 0;
@@ -428,6 +452,10 @@
 }
 
 @media (max-width: 760px) {
+  .projectsSection {
+    display: none;
+  }
+
   .aboutTags,
   .statsGrid,
   .aboutFooter,
@@ -435,6 +463,93 @@
   .projectGrid,
   .diffCard {
     grid-template-columns: 1fr;
+  }
+
+  .resumeSide,
+  .diffCards {
+    display: none;
+  }
+
+  .skillsPanel {
+    padding: 1rem;
+  }
+
+  .skillRows {
+    gap: 0.8rem;
+  }
+
+  .skillRow {
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    background: rgba(4, 12, 28, 0.68);
+  }
+
+  .skillToggle {
+    align-items: center;
+    min-height: 3.8rem;
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+  .skillToggle p {
+    display: none;
+  }
+
+  .skillRowOpen .skillToggle {
+    align-items: flex-start;
+  }
+
+  .skillRowOpen .skillToggle p {
+    display: block;
+  }
+
+  .skillToggle h3 {
+    font-size: 1rem;
+  }
+
+  .skillToggle span {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    flex: 0 0 auto;
+    border: 1px solid $color-border;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.16);
+  }
+
+  .skillToggle span::before,
+  .skillToggle span::after {
+    content: '';
+    position: absolute;
+    width: 0.72rem;
+    height: 2px;
+    border-radius: 999px;
+    background: $color-primary-light;
+    transition: transform $transition;
+  }
+
+  .skillToggle span::after {
+    transform: rotate(90deg);
+  }
+
+  .skillRowOpen .skillToggle span::after {
+    transform: rotate(0deg);
+  }
+
+  .skillRowContent {
+    display: none;
+    padding: 0 1rem 1rem;
+  }
+
+  .skillRowOpen .skillRowContent {
+    display: grid;
+  }
+
+  .skillList {
+    gap: 0.5rem;
   }
 
   .diffScore {

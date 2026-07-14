@@ -1,17 +1,54 @@
 'use client';
 
+import { useEffect, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { openContactModal } from '@/components/contact/ContactModal';
 import { useLanguage } from '@/components/language/LanguageProvider';
-import { profile } from '@/data/profile';
+import { getPrimaryCvPath } from '@/data/cv';
 import styles from './HeroSection.module.scss';
 
 export function HeroSection() {
-  const { content: localizedContent, translate } = useLanguage();
+  const { content: localizedContent, language, translate } = useLanguage();
   const heroContent = translate.heroDashboard;
   const projects = localizedContent.projects;
   const featuredProjects = projects.slice(1, 7);
+  const carouselProjects = useMemo(() => [...projects, ...projects, ...projects], [projects]);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+
+    if (!carousel || projects.length === 0) {
+      return;
+    }
+
+    const centerCarousel = () => {
+      const singleTrackWidth = carousel.scrollWidth / 3;
+      carousel.scrollLeft = singleTrackWidth;
+    };
+
+    const keepLooping = () => {
+      const singleTrackWidth = carousel.scrollWidth / 3;
+
+      if (carousel.scrollLeft < singleTrackWidth * 0.45) {
+        carousel.scrollLeft += singleTrackWidth;
+      }
+
+      if (carousel.scrollLeft > singleTrackWidth * 1.55) {
+        carousel.scrollLeft -= singleTrackWidth;
+      }
+    };
+
+    centerCarousel();
+    carousel.addEventListener('scroll', keepLooping, { passive: true });
+    window.addEventListener('resize', centerCarousel);
+
+    return () => {
+      carousel.removeEventListener('scroll', keepLooping);
+      window.removeEventListener('resize', centerCarousel);
+    };
+  }, [projects]);
 
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
@@ -36,7 +73,7 @@ export function HeroSection() {
           <button className={styles.primaryAction} type="button" onClick={openContactModal}>
             {heroContent.primaryCta}
           </button>
-          <Link className={styles.secondaryAction} href={profile.cvPath}>
+          <Link className={styles.secondaryAction} href={getPrimaryCvPath(language)}>
             {heroContent.secondaryCta}
           </Link>
         </div>
@@ -65,6 +102,15 @@ export function HeroSection() {
           <div className={styles.projectGrid}>
             {featuredProjects.map((project) => (
               <Link key={project.slug} className={styles.projectMini} href={`/projetos/${project.slug}`}>
+                <Image src={project.image} alt={`${translate.accessibilityLabels.projectPreview} ${project.title}`} width={520} height={292} />
+                <strong>{project.title}</strong>
+                <small>{project.type}</small>
+              </Link>
+            ))}
+          </div>
+          <div className={styles.projectCarousel} ref={carouselRef} aria-label={heroContent.projectsTitle}>
+            {carouselProjects.map((project, index) => (
+              <Link key={`${project.slug}-${index}`} className={styles.projectMini} href={`/projetos/${project.slug}`}>
                 <Image src={project.image} alt={`${translate.accessibilityLabels.projectPreview} ${project.title}`} width={520} height={292} />
                 <strong>{project.title}</strong>
                 <small>{project.type}</small>

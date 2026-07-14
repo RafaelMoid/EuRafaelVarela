@@ -9,6 +9,7 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import { Container } from '@/components/ui/Container';
 import { SkillBadge } from '@/components/ui/SkillBadge';
+import { getPrimaryCvPath } from '@/data/cv';
 import { profile } from '@/data/profile';
 import styles from './page.module.scss';
 
@@ -84,9 +85,45 @@ function AnimatedStatValue({ value }: { value: string }) {
   return <strong ref={elementRef}>{displayValue}</strong>;
 }
 
+function MobileSkillRow({
+  group,
+  description
+}: {
+  group: { title: string; items: string[] };
+  description: string;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const panelId = `skill-panel-${group.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+
+  return (
+    <div className={`${styles.skillRow} ${isOpen ? styles.skillRowOpen : ''}`}>
+      <button
+        className={styles.skillToggle}
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={() => setIsOpen((current) => !current)}
+      >
+        <div>
+          <h3>{group.title}</h3>
+          <p>{description}</p>
+        </div>
+        <span aria-hidden="true" />
+      </button>
+      <div id={panelId} className={styles.skillRowContent}>
+        <div className={styles.skillList}>
+          {group.items.slice(0, 8).map((item) => (
+            <SkillBadge key={item}>{item}</SkillBadge>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [resumeEmailCopied, setResumeEmailCopied] = useState(false);
-  const { content, translate } = useLanguage();
+  const { content, language, translate } = useLanguage();
   const home = translate.home;
   const contactModal = translate.contactModal;
   const { projects, skillGroups } = content;
@@ -157,7 +194,7 @@ export default function HomePage() {
               <h2 id="resume-title">{home.resume.title}</h2>
               <p>{home.resume.role}</p>
               <div className={styles.resumeContactActions} aria-label={contactModal.title}>
-                <Link className={`${styles.resumeActionButton} ${styles.resumeActionPrimary}`} href={profile.cvPath}>
+                <Link className={`${styles.resumeActionButton} ${styles.resumeActionPrimary}`} href={getPrimaryCvPath(language)}>
                   {home.resume.cta}
                 </Link>
                 <button className={`${styles.resumeActionButton} ${styles.resumeActionSecondary}`} type="button" onClick={copyResumeEmail}>
@@ -206,24 +243,18 @@ export default function HomePage() {
             </div>
             <div className={styles.skillRows}>
               {skillGroups.map((group) => (
-                <div key={group.title} className={styles.skillRow}>
-                  <div>
-                    <h3>{group.title}</h3>
-                    <p>{group.title.includes('WordPress') ? home.skills.wordpressDescription : home.skills.defaultDescription}</p>
-                  </div>
-                  <div className={styles.skillList}>
-                    {group.items.slice(0, 8).map((item) => (
-                      <SkillBadge key={item}>{item}</SkillBadge>
-                    ))}
-                  </div>
-                </div>
+                <MobileSkillRow
+                  key={group.title}
+                  group={group}
+                  description={group.title.includes('WordPress') ? home.skills.wordpressDescription : home.skills.defaultDescription}
+                />
               ))}
             </div>
           </div>
         </Container>
       </section>
 
-      <section className={styles.section} aria-labelledby="projects-title">
+      <section className={`${styles.section} ${styles.projectsSection}`} aria-labelledby="projects-title">
         <Container>
           <div className={styles.sectionHeader}>
             <h2 id="projects-title">{home.projects.title}</h2>

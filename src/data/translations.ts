@@ -42,6 +42,7 @@ export const baseTranslations = {
       { label: 'Código limpo', value: 'Escalável' },
       { label: 'Performance', value: 'Otimizado' },
       { label: 'Acessibilidade', value: 'Inclusivo' },
+      { label: 'SEO técnico', value: 'Encontrável' },
     ],
     resumeBullets: ['4+ anos de experiência', 'Especialista Full-Stack', 'Problem solver e builder'],
     metrics: [
@@ -293,11 +294,12 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       contactCta: 'Get In Touch',
       codeTitle: 'Building digital experiences',
       profileStatus: 'Available for work',
-      qualities: [
-        { label: 'Clean Code', value: 'Scalable' },
-        { label: 'Performance', value: 'Optimized' },
-        { label: 'Accessibility', value: 'Inclusive' },
-      ],
+    qualities: [
+      { label: 'Clean Code', value: 'Scalable' },
+      { label: 'Performance', value: 'Optimized' },
+      { label: 'Accessibility', value: 'Inclusive' },
+      { label: 'Technical SEO', value: 'Discoverable' },
+    ],
       resumeBullets: ['4+ years experience', 'Full-Stack specialist', 'Problem solver and builder'],
       metrics: [
         { title: 'SEO', score: '93', items: ['Meta Tags', 'Open Graph', 'Sitemap', 'Robots.txt'] },
@@ -491,10 +493,11 @@ export const translations: Record<LanguageCode, typeof baseTranslations> = {
       contactCta: 'Contactar',
       codeTitle: 'Construyendo experiencias digitales',
       profileStatus: 'Disponible para trabajar',
-      qualities: [
-        { label: 'Clean Code', value: 'Escalable' },
-        { label: 'Performance', value: 'Optimizado' },
-        { label: 'Accessibility', value: 'Inclusivo' },
+    qualities: [
+        { label: 'Código limpio', value: 'Escalable' },
+        { label: 'Rendimiento', value: 'Optimizado' },
+        { label: 'Accesibilidad', value: 'Inclusivo' },
+        { label: 'SEO técnico', value: 'Encontrable' },
       ],
       resumeBullets: ['4+ años de experiencia', 'Especialista Full-Stack', 'Problem solver y builder'],
       metrics: [

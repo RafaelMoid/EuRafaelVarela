@@ -5,9 +5,10 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { ResumeCard } from '@/components/cards/ResumeCard';
 import { useLanguage } from '@/components/language/LanguageProvider';
+import { getCvPathByResumeSlug } from '@/data/cv';
 
 export function ResumeFocusPageClient({ slug }: { slug: string }) {
-  const { content, translate } = useLanguage();
+  const { content, language, translate } = useLanguage();
   const focus = content.resumeFocuses.find((item) => item.slug === slug);
   const { projects, resumeFocuses } = content;
   const labels = translate.resumeFocus;
@@ -28,6 +29,9 @@ export function ResumeFocusPageClient({ slug }: { slug: string }) {
           <div style={{ background: 'rgba(17, 24, 39, 0.9)', border: '1px solid #334155', borderRadius: '18px', padding: '1.25rem' }}>
             <h3 style={{ marginTop: 0 }}>{labels.stackSummary}</h3>
             <p>{focus.stackSummary}</p>
+            <a href={getCvPathByResumeSlug(focus.slug, language)} style={{ display: 'inline-flex', marginBottom: '1rem', color: '#60a5fa', fontWeight: 700 }}>
+              {translate.resume.downloadText}
+            </a>
             <h3>{labels.pageOverview}</h3>
             <p>{focus.overview}</p>
           </div>
@@ -46,7 +50,14 @@ export function ResumeFocusPageClient({ slug }: { slug: string }) {
 
         <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', marginBottom: '1.2rem' }}>
           {otherFocuses.map((item) => (
-            <ResumeCard key={item.slug} title={item.title} description={item.intro} href={`/curriculo/${item.slug}`} />
+            <ResumeCard
+              key={item.slug}
+              title={item.title}
+              description={item.intro}
+              href={`/curriculo/${item.slug}`}
+              downloadHref={getCvPathByResumeSlug(item.slug, language)}
+              downloadLabel={translate.resume.downloadText}
+            />
           ))}
         </div>
 

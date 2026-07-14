@@ -7,6 +7,6 @@ export const profile = {
   email: 'rafaelvrcr@gmail.com',
   linkedin: 'https://www.linkedin.com/in/rafaelvarelati/',
   github: 'https://github.com/RafaelMoid',
-  cvPath: '/assets/cv/rafael-varela-cv.pdf',
+  cvPath: '/assets/cv/rafael-varela-frontend-pt.pdf',
   heroBadges: ['WordPress/PHP', 'Front-end', 'Sistemas web', 'SEO técnico', 'Performance', 'Recife/PE', 'Experiência internacional']
 };

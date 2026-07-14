@@ -39,8 +39,9 @@ Acesse http://localhost:3000.
 
 ```bash
 npm run build
-npm run start
 ```
+
+Para hospedagem cPanel/Apache, envie o conteudo da pasta `out` para a pasta publica do dominio, normalmente `public_html`.
 
 ## Estrutura de pastas
 
@@ -60,6 +61,15 @@ npm run start
 
 ## Registro de mudanças
 
+### 13/07/2026
+
+- Projeto configurado para exportacao estatica com `output: 'export'`, permitindo publicacao em hospedagem cPanel sem servidor Node.
+- `next/image` foi configurado com `unoptimized: true` para compatibilidade com exportacao estatica.
+- Build de producao passou a gerar a pasta `out`, que contem os arquivos que devem ser enviados para `public_html`.
+- Rotas estaticas de `robots.txt` e `sitemap.xml` foram ajustadas com `dynamic = 'force-static'` para funcionar no export.
+- Rota dinamica de imagem Open Graph foi substituida por imagem estatica em `public/assets/og/og-image.png`.
+- API antiga de traducao foi removida por nao ser usada no padrao atual de dicionarios e por depender de servidor.
+
 ### 12/07/2026
 
 - Padrao oficial de traducao definido: todo texto visivel deve ficar em arquivos de dados/dicionario e ser renderizado via React pelo `LanguageProvider`.
@@ -75,7 +85,7 @@ npm run start
 - Paginas receberam `noindex` e `nofollow` via metadata para evitar indexacao por buscadores.
 - `robots.txt` passou a bloquear crawlers genericos e liberar crawlers sociais comuns para leitura dos cards de compartilhamento.
 - Sitemap foi esvaziado para nao divulgar rotas para indexacao.
-- Imagem dinamica `/opengraph-image` foi criada com `next/og` para gerar preview social 1200x630 com a identidade visual do portfolio.
+- Imagem de preview social 1200x630 foi preparada com a identidade visual do portfolio.
 
 ### 11/07/2026
 
