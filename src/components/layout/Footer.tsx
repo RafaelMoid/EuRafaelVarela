@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { profile } from '@/data/profile';
 import { ContactTrigger } from '@/components/contact/ContactTrigger';
 import { useLanguage } from '@/components/language/LanguageProvider';
@@ -11,8 +12,19 @@ export function Footer() {
   const pathname = usePathname();
   const { translate } = useLanguage();
   const year = new Date().getFullYear();
+  const [cleanMode, setCleanMode] = useState(false);
 
-  if (pathname === '/pomodoro') {
+  useEffect(() => {
+    const syncCleanMode = (event?: Event) => {
+      const detail = (event as CustomEvent<boolean> | undefined)?.detail;
+      setCleanMode(typeof detail === 'boolean' ? detail : localStorage.getItem('rv-clean-mode') === 'true');
+    };
+    syncCleanMode();
+    window.addEventListener('rv-clean-mode-change', syncCleanMode);
+    return () => window.removeEventListener('rv-clean-mode-change', syncCleanMode);
+  }, []);
+
+  if (cleanMode) {
     return null;
   }
 

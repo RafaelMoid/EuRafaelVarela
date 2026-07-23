@@ -12,6 +12,7 @@ export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [hash, setHash] = useState('');
+  const [cleanMode, setCleanMode] = useState(false);
   const { translate } = useLanguage();
 
   const closeMenu = () => setMenuOpen(false);
@@ -27,7 +28,17 @@ export function Header() {
     };
   }, []);
 
-  if (pathname === '/pomodoro') {
+  useEffect(() => {
+    const syncCleanMode = (event?: Event) => {
+      const detail = (event as CustomEvent<boolean> | undefined)?.detail;
+      setCleanMode(typeof detail === 'boolean' ? detail : localStorage.getItem('rv-clean-mode') === 'true');
+    };
+    syncCleanMode();
+    window.addEventListener('rv-clean-mode-change', syncCleanMode);
+    return () => window.removeEventListener('rv-clean-mode-change', syncCleanMode);
+  }, []);
+
+  if (cleanMode) {
     return null;
   }
 
