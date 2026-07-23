@@ -1,0 +1,122 @@
+.page {
+  --accent: #ff725f;
+  --accent-dark: #d84f40;
+  --accent-soft: rgba(255, 114, 95, .12);
+  min-height: 100vh;
+  margin-top: -1px;
+  padding-bottom: 5rem;
+  background: #f8f7f3;
+  color: #252525;
+  font-family: var(--font-inter), Arial, sans-serif;
+  transition: background .35s ease;
+}
+.short { --accent: #3ba99c; --accent-dark: #217f75; --accent-soft: rgba(59,169,156,.12); }
+.long { --accent: #5584c6; --accent-dark: #3767a8; --accent-soft: rgba(85,132,198,.12); }
+.deep { --accent: #8b5cf6; --accent-dark: #6d3fd1; --accent-soft: rgba(139,92,246,.12); }
+.page svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.toolHeader { width: min(1040px, calc(100% - 2rem)); height: 78px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e6e3dc; }
+.logo { display: flex; align-items: center; gap: .65rem; font-size: 1.2rem; font-weight: 850; letter-spacing: -.04em; }
+.logo > span:last-child span { color: var(--accent); }
+.logoMark { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 9px; background: var(--accent); color: white; transform: rotate(-6deg); }
+.logoMark svg { width: 1rem; }
+.toolHeader nav { display: flex; gap: .5rem; }
+.headerAction { display: flex; align-items: center; gap: .45rem; border: 0; border-radius: 9px; padding: .58rem .75rem; background: transparent; color: #595959; font: inherit; font-size: .82rem; font-weight: 650; cursor: pointer; transition: .2s; }
+.headerAction:hover { background: #eceae4; color: #202020; }
+.workspace { width: min(620px, calc(100% - 2rem)); margin: 3rem auto 0; }
+.timerCard { padding: 1.25rem 1.5rem 1.6rem; border: 1px solid #e9e5df; border-radius: 24px; background: rgba(255,255,255,.88); box-shadow: 0 20px 55px rgba(41,32,28,.09); text-align: center; }
+.modes { display: inline-flex; padding: .3rem; border-radius: 11px; background: #f0eee9; }
+.modes button { border: 0; border-radius: 8px; padding: .55rem .85rem; background: transparent; color: #77736e; font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
+.modes button[aria-selected='true'] { background: white; color: var(--accent-dark); box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+.timer { margin: 1.7rem 0 1.25rem; font-size: clamp(5rem, 18vw, 8.2rem); font-weight: 760; line-height: .92; letter-spacing: -.085em; font-variant-numeric: tabular-nums; }
+.timer span { color: var(--accent); font-weight: 500; }
+.progressTrack { height: 4px; overflow: hidden; border-radius: 10px; background: #eeeae4; }
+.progressTrack span { display: block; width: var(--progress); height: 100%; border-radius: inherit; background: var(--accent); transition: width .25s linear; }
+.controls { display: flex; align-items: center; justify-content: center; gap: .7rem; margin-top: 1.55rem; }
+.startButton { min-width: 150px; display: flex; align-items: center; justify-content: center; gap: .55rem; border: 0; border-radius: 12px; padding: .9rem 1.5rem; background: var(--accent); color: white; box-shadow: 0 7px 0 var(--accent-dark); font: inherit; font-weight: 800; cursor: pointer; transform: translateY(-3px); }
+.startButton:active { box-shadow: 0 2px 0 var(--accent-dark); transform: translateY(2px); }
+.skipButton { width: 47px; height: 47px; display: grid; place-items: center; border: 1px solid #ddd8d0; border-radius: 12px; background: white; color: #6a6762; cursor: pointer; }
+.sessionText { display: grid; gap: .12rem; margin: 1.7rem 0 2.8rem; text-align: center; }
+.sessionText span { color: #aaa49c; font-size: .72rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.sessionText strong { font-size: .95rem; }
+.lofiPlayer { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .8rem; margin: -1rem 0 2.7rem; padding: .8rem; border: 1px solid #e5e1d9; border-radius: 16px; background: rgba(255,255,255,.82); box-shadow: 0 10px 28px rgba(41,32,28,.06); }
+.lofiArtwork { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(145deg, var(--accent-soft), #ece6dd); color: var(--accent-dark); }
+.lofiArtwork svg { width: 1.45rem; height: 1.45rem; }
+.lofiInfo { min-width: 0; display: grid; gap: .08rem; }
+.lofiInfo span { color: var(--accent-dark); font-size: .58rem; font-weight: 850; letter-spacing: .12em; }
+.lofiInfo strong { overflow: hidden; font-size: .84rem; text-overflow: ellipsis; white-space: nowrap; }
+.lofiInfo small { color: #8b867e; font-size: .64rem; }
+.lofiButton { width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 50%; background: #292929; color: white; cursor: pointer; }
+.lofiButton svg { width: 1.1rem; }
+.volumeControl { grid-column: 2 / 4; display: flex; align-items: center; gap: .55rem; color: #8b867e; }
+.volumeControl svg { width: .9rem; height: .9rem; }
+.volumeControl input { width: 100%; height: 4px; accent-color: var(--accent); cursor: pointer; }
+.tasksHeader { display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: .8rem; border-bottom: 2px solid #292929; }
+.tasksHeader span:first-child, .about > span, .modalTitle span { color: var(--accent-dark); font-size: .66rem; font-weight: 850; letter-spacing: .13em; }
+.tasksHeader h1 { margin: .15rem 0 0; font-size: 1.5rem; line-height: 1.2; letter-spacing: -.035em; }
+.counter { padding: .25rem .55rem; border-radius: 50px; background: #e9e6df; color: #736f68; font-size: .72rem; font-weight: 800; }
+.taskList { display: grid; gap: .6rem; margin-top: .75rem; }
+.empty { display: grid; justify-items: center; padding: 2.2rem 1rem; border: 1px dashed #d4cfc5; border-radius: 15px; color: #817c74; text-align: center; }
+.empty span { width: 2.6rem; height: 2.6rem; display: grid; place-items: center; margin-bottom: .7rem; border-radius: 50%; background: var(--accent-soft); color: var(--accent); }
+.empty strong { color: #4d4944; font-size: .92rem; }
+.empty p { margin: .25rem 0 0; font-size: .78rem; }
+.task { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: .7rem; min-height: 58px; padding: .6rem .7rem; border: 1px solid #e5e1d9; border-left: 4px solid transparent; border-radius: 12px; background: white; cursor: pointer; transition: .2s; }
+.task:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(35,30,25,.06); }
+.activeTask { border-left-color: var(--accent); }
+.task > span { font-size: .9rem; font-weight: 650; }
+.task .done { color: #9c9891; text-decoration: line-through; }
+.task small { color: #8a867e; font-weight: 700; }
+.check, .delete { width: 29px; height: 29px; display: grid; place-items: center; border: 1px solid #d8d4cc; border-radius: 50%; background: transparent; color: transparent; cursor: pointer; }
+.check:hover, .task:has(.done) .check { border-color: var(--accent); background: var(--accent); color: white; }
+.check svg { width: .9rem; }
+.delete { border: 0; border-radius: 8px; color: #aaa59d; }
+.delete:hover { background: #f3e7e5; color: #c34d40; }
+.addTask { width: 100%; display: flex; align-items: center; justify-content: center; gap: .5rem; margin-top: .75rem; padding: .9rem; border: 1px dashed #c9c3b9; border-radius: 12px; background: transparent; color: #77716a; font: inherit; font-size: .85rem; font-weight: 750; cursor: pointer; }
+.addTask:hover { border-color: var(--accent); color: var(--accent-dark); background: var(--accent-soft); }
+.taskForm { display: grid; grid-template-columns: 1fr 145px; gap: .8rem; margin-top: .75rem; padding: 1rem; border: 1px solid #e0dcd3; border-radius: 14px; background: white; box-shadow: 0 10px 30px rgba(30,25,20,.07); }
+.taskForm label, .durationGrid label { display: grid; gap: .35rem; color: #625e58; font-size: .72rem; font-weight: 750; }
+.taskForm input, .durationGrid input, .interval input { width: 100%; border: 1px solid #ddd8cf; border-radius: 8px; padding: .7rem; background: #f8f7f3; color: #252525; font: inherit; }
+.taskForm > div { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: .5rem; }
+.taskForm button { border: 0; border-radius: 8px; padding: .65rem 1rem; font: inherit; font-weight: 700; cursor: pointer; }
+.taskForm button:last-child { background: var(--accent); color: white; }
+.summary { display: flex; justify-content: center; gap: 1.5rem; margin-top: .9rem; padding: .85rem; border-top: 1px solid #dedad2; color: #8a867e; font-size: .75rem; }
+.summary strong { margin-left: .25rem; color: #3c3935; }
+.about { margin: 6rem 0 1rem; padding-top: 2.5rem; border-top: 1px solid #ddd9d1; }
+.about h2 { max-width: 520px; margin: .55rem 0 .75rem; font-size: clamp(1.7rem, 5vw, 2.35rem); line-height: 1.12; letter-spacing: -.05em; }
+.about p { max-width: 570px; color: #706c66; font-size: .95rem; }
+.about div { display: flex; gap: .75rem; margin-top: 1.35rem; }
+.about a, .about button { border: 1px solid #d9d4cc; border-radius: 9px; padding: .7rem .9rem; background: white; color: #3c3935; font: inherit; font-size: .78rem; font-weight: 750; cursor: pointer; }
+.about a:first-child { background: #292929; color: white; border-color: #292929; }
+.about a span, .about button span { margin-left: .35rem; }
+.modalBackdrop { position: fixed; inset: 0; z-index: 1200; display: grid; place-items: center; padding: 1rem; background: rgba(22,20,18,.58); backdrop-filter: blur(5px); }
+.settingsModal { width: min(480px, 100%); max-height: 90vh; overflow: auto; padding: 1.5rem; border-radius: 18px; background: #fff; color: #292929; box-shadow: 0 24px 80px rgba(0,0,0,.25); }
+.modalTitle { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px solid #e8e4dc; }
+.modalTitle h2 { margin: .2rem 0 0; font-size: 1.4rem; }
+.modalTitle button { border: 0; background: none; color: #888; font-size: 1.8rem; cursor: pointer; }
+.durationGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; margin: 1.2rem 0; }
+.durationGrid label span { position: relative; }
+.durationGrid label span::after { content: 'min'; position: absolute; right: .6rem; top: .62rem; color: #999; font-size: .68rem; }
+.durationGrid input { padding-right: 2.3rem; }
+.interval, .toggle { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-top: 1px solid #eeeae3; color: #504d48; font-size: .82rem; font-weight: 650; }
+.interval span { display: flex; align-items: center; gap: .45rem; color: #8d8880; font-size: .75rem; }
+.interval input { width: 58px; padding: .45rem; }
+.toggle input { width: 38px; height: 21px; accent-color: var(--accent); }
+.saveButton { width: 100%; margin-top: 1rem; padding: .8rem; border: 0; border-radius: 10px; background: var(--accent); color: white; font: inherit; font-weight: 800; cursor: pointer; }
+@media (max-width: 620px) {
+  .toolHeader { height: 68px; }
+  .headerAction span { display: none; }
+  .headerAction { padding: .55rem; }
+  .workspace { margin-top: 1.5rem; }
+  .timerCard { padding: 1rem .8rem 1.35rem; border-radius: 18px; }
+  .modes { width: 100%; }
+  .modes button { flex: 1; padding: .5rem .25rem; font-size: .7rem; }
+  .timer { font-size: clamp(4.7rem, 26vw, 6rem); }
+  .lofiInfo small { white-space: normal; }
+  .taskForm { grid-template-columns: 1fr; }
+  .taskForm > div { grid-column: 1; }
+  .summary { gap: .65rem; justify-content: space-between; }
+  .summary span { display: grid; text-align: center; }
+  .about { margin-top: 4rem; }
+  .about div { flex-direction: column; }
+  .about a, .about button { text-align: center; }
+  .durationGrid { grid-template-columns: 1fr; }
+}

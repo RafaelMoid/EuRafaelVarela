@@ -27,6 +27,10 @@ export function Header() {
     };
   }, []);
 
+  if (pathname === '/pomodoro') {
+    return null;
+  }
+
   const navItems = [
     { href: '/', label: translate.nav.home },
     { href: '/projetos', label: translate.nav.projects },

@@ -17,6 +17,22 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'pomodoro-focus',
+    title: 'Foco — Timer Pomodoro',
+    description:
+      'Ferramenta de produtividade sem login para organizar tarefas e alternar entre ciclos personalizáveis de foco e descanso.',
+    stack: ['Next.js', 'React', 'TypeScript', 'SCSS Modules', 'LocalStorage', 'Acessibilidade'],
+    status: 'Publicado',
+    type: 'Ferramenta de produtividade',
+    problem: 'Ajudar pessoas a transformar tarefas em períodos de foco sustentáveis, sem cadastro, anúncios ou distrações.',
+    features: ['Timer preciso em segundo plano', 'Lista de tarefas e estimativas', 'Ciclos personalizáveis', 'Persistência local sem login'],
+    decisions: ['Experiência local-first e sem conta', 'Interface própria integrada ao portfólio', 'Web Audio sem arquivos externos'],
+    futureImprovements: ['Relatório semanal local', 'Atalhos de teclado', 'Notificações opcionais do navegador'],
+    image: '/assets/projects/pomodoro-focus.svg',
+    deployUrl: '/pomodoro',
+    githubUrl: '#'
+  },
+  {
     slug: 'rafael-varela-portfolio-hub',
     title: 'Rafael Varela Portfolio Hub',
     description:

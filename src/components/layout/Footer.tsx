@@ -1,14 +1,20 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { profile } from '@/data/profile';
 import { ContactTrigger } from '@/components/contact/ContactTrigger';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import styles from './Footer.module.scss';
 
 export function Footer() {
+  const pathname = usePathname();
   const { translate } = useLanguage();
   const year = new Date().getFullYear();
+
+  if (pathname === '/pomodoro') {
+    return null;
+  }
 
   return (
     <footer className={styles.footer}>

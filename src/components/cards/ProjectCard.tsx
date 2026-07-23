@@ -10,7 +10,8 @@ export function ProjectCard({ project }: { project: Project }) {
   const { translate } = useLanguage();
 
   return (
-    <article className={styles.card}>
+    <Link className={styles.card} href={`/projetos/${project.slug}`} aria-label={`${translate.home.projects.details}: ${project.title}`}>
+      <article>
       <div className={styles.imageWrap}>
         <Image src={project.image} alt={`${translate.projectDetail.imageAlt} ${project.title}`} width={800} height={450} priority={false} />
       </div>
@@ -22,10 +23,11 @@ export function ProjectCard({ project }: { project: Project }) {
             <span key={item}>{item}</span>
           ))}
         </div>
-        <Link className={styles.link} href={`/projetos/${project.slug}`}>
+        <span className={styles.link}>
           {translate.home.projects.details} →
-        </Link>
+        </span>
       </div>
-    </article>
+      </article>
+    </Link>
   );
 }

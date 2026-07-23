@@ -1,11 +1,17 @@
 'use client';
 
 import { useLanguage } from '@/components/language/LanguageProvider';
+import { usePathname } from 'next/navigation';
 import { openContactModal } from './ContactModal';
 import styles from './FloatingContactButton.module.scss';
 
 export function FloatingContactButton() {
+  const pathname = usePathname();
   const { translate } = useLanguage();
+
+  if (pathname === '/pomodoro') {
+    return null;
+  }
 
   return (
     <button className={styles.button} type="button" onClick={openContactModal} aria-label={translate.accessibilityLabels.floatingContact}>
