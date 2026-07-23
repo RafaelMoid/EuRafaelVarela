@@ -12,14 +12,15 @@ export function HeroSection() {
   const { content: localizedContent, language, translate } = useLanguage();
   const heroContent = translate.heroDashboard;
   const projects = localizedContent.projects;
-  const featuredProjects = projects.slice(1, 7);
-  const carouselProjects = useMemo(() => [...projects, ...projects, ...projects], [projects]);
+  const panelProjects = useMemo(() => projects.filter((project) => project.slug !== 'rafael-varela-portfolio-hub'), [projects]);
+  const featuredProjects = panelProjects.slice(0, 6);
+  const carouselProjects = useMemo(() => [...panelProjects, ...panelProjects, ...panelProjects], [panelProjects]);
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const carousel = carouselRef.current;
 
-    if (!carousel || projects.length === 0) {
+    if (!carousel || panelProjects.length === 0) {
       return;
     }
 
@@ -48,7 +49,7 @@ export function HeroSection() {
       carousel.removeEventListener('scroll', keepLooping);
       window.removeEventListener('resize', centerCarousel);
     };
-  }, [projects]);
+  }, [panelProjects]);
 
   return (
     <section className={styles.hero} aria-labelledby="hero-title">

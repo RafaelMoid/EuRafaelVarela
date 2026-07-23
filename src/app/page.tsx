@@ -261,7 +261,7 @@ export default function HomePage() {
             <Link href="/projetos">{home.projects.cta}</Link>
           </div>
           <div className={styles.projectGrid}>
-            {projects.slice(1).map((project) => (
+            {projects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
